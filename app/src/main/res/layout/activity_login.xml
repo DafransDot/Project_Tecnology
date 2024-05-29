@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Login_activity"
     android:padding="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/whatsapp_image_2024_05_29_at_15_22_47">
 
+<ImageView
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_gravity="center"
+    android:src="@drawable/_0240529_131333"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Please Login"
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
-        android:layout_margin="20dp"/>
+        android:src="@drawable/please_login"/>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -24,7 +31,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etloginUsername"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/baseline_account_circle_24"
+            android:drawablePadding="10dp">
 
 <!--            android:drawableStart="@drawable/baseline_account_box_24">-->
         </com.google.android.material.textfield.TextInputEditText>
@@ -33,12 +42,15 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        >
+        android:hint="Password">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etloginPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/lock"
+            android:drawablePadding="10dp"
+
 
             android:inputType="textPassword">
 <!--            android:drawableStart="@drawable/baseline_add_moderator_24">-->
