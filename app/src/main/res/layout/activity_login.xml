@@ -26,8 +26,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="username"
-        >
+        android:hint="username">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etloginUsername"
             android:layout_width="match_parent"
@@ -53,7 +53,7 @@
 
 
             android:inputType="textPassword">
-<!--            android:drawableStart="@drawable/baseline_add_moderator_24">-->
+            <!--            android:drawableStart="@drawable/baseline_add_moderator_24">-->
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,7 +68,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="create your Account"
+        android:textColor="@color/black"
+        android:textStyle="italic"
         android:layout_margin="30dp"
+        android:textSize="15dp"
         android:layout_gravity="center"/>
 
 </LinearLayout>
