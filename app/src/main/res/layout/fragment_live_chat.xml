@@ -19,7 +19,7 @@
     <EditText
         android:id="@+id/editTextMessage"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="60dp"
         android:hint="Type a message" />
 
     <Button

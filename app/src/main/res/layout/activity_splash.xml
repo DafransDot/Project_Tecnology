@@ -22,6 +22,7 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:src="@drawable/group_5"/>
+        android:src="@drawable/group_4"
+        android:layout_marginTop="15dp"/>
 
 </LinearLayout>
