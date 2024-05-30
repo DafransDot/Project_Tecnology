@@ -13,4 +13,5 @@
         android:id="@+id/fr_liveChat"
         android:icon="@drawable/comment"
         android:title="Community"/>
+
 </menu>
