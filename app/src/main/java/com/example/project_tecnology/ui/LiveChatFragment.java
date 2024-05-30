@@ -2,13 +2,32 @@ package com.example.project_tecnology.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.project_tecnology.Adapter.chatAdapter;
 import com.example.project_tecnology.R;
+import com.example.project_tecnology.api.ApiClient;
+import com.example.project_tecnology.api.ApiInterface;
+import com.example.project_tecnology.model.liveChat.liveChat;
+
+import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +44,12 @@ public class LiveChatFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private RecyclerView recyclerView;
+    private chatAdapter chatadapter;
+    private EditText editTextMessage;
+    private Button buttonSend;
+    private ApiInterface apiInterface;
+
 
     public LiveChatFragment() {
         // Required empty public constructor
@@ -55,6 +80,10 @@ public class LiveChatFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+
     }
 
     @Override
@@ -62,5 +91,66 @@ public class LiveChatFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_live_chat, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView = view.findViewById(R.id.recyclerView);
+        editTextMessage = view.findViewById(R.id.editTextMessage);
+        buttonSend = view.findViewById(R.id.buttonSend);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        buttonSend.setOnClickListener( v ->{
+            String message = editTextMessage.getText().toString();
+            if (!TextUtils.isEmpty(message)){
+                sendMessage("YourName", message);
+            }else {
+                Toast.makeText(getContext(), "Pesan tidak boleh kosong", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    private void sendMessage(String name, String message) {
+        apiInterface.sendChat(name, message).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if ((response.isSuccessful())){
+                    editTextMessage.setText("");
+                    AmbilChats();
+                }else {
+                    Toast.makeText(getContext(), "Gagal mengirim pesan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getContext(), "Gagal mengirim pesan", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void AmbilChats() {
+        apiInterface.getChats().enqueue(new Callback<List<liveChat>>() {
+            @Override
+            public void onResponse(Call<List<liveChat>> call, Response<List<liveChat>> response) {
+                if (response.isSuccessful() && response.body() != null){
+                    List<liveChat> liveChats = response.body();
+                    chatadapter = new chatAdapter(liveChats);
+                    recyclerView.setAdapter(chatadapter);
+                }else {
+                    Toast.makeText(getContext(), "Gagal mengambil pesan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<liveChat>> call, Throwable t) {
+
+            }
+        });
     }
 }
