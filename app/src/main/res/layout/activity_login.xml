@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/baseline_account_circle_24"
+            android:textColor="@color/black"
             android:drawablePadding="10dp">
 
 <!--            android:drawableStart="@drawable/baseline_account_box_24">-->
@@ -49,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/lock"
+            android:textColor="@color/black"
             android:drawablePadding="10dp"
 
 

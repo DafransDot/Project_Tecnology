@@ -32,12 +32,12 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
-    @POST("send_liveChat.php")
+    @POST("post_chat.php")
     Call<ResponseBody> sendChat (
             @Field("name") String name,
             @Field("chat") String chat
     );
 
-    @GET("get_liveChat.php")
+    @GET("get_chat.php")
     Call<List<liveChat>> getChats();
 }

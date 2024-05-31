@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.project_tecnology.api.ApiClient;
@@ -24,6 +25,7 @@ public class Login_activity extends AppCompatActivity {
     String Username, Password;
     ApiInterface apiInterface;
     private SessionManager sessionManager;
+    private Integer id ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,18 +55,21 @@ public class Login_activity extends AppCompatActivity {
                 if (response.body() != null && response.isSuccessful() && response.body().isStatus()) {
                     sessionManager = new SessionManager(Login_activity.this);
                     LoginData loginData = response.body().getData();
+                    id = loginData.getUserId();
                     sessionManager.createLoginSession(loginData);
-
+                    Log.d("Login Activity", "Login successfully");
                     Toast.makeText(Login_activity.this, response.body().getData().getName(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login_activity.this, MainActivity.class);
                     startActivity(intent);
                 }else {
+                    Log.d("Login Activity", "Login Failed");
                     Toast.makeText(Login_activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Login> call, Throwable t) {
+                Log.d("Login Activity", "Failed fetch data " + t.getMessage());
                 Toast.makeText(Login_activity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
             }

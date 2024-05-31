@@ -1,5 +1,7 @@
 package com.example.project_tecnology.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,7 @@ import com.example.project_tecnology.R;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
 import com.example.project_tecnology.model.liveChat.liveChat;
+import com.example.project_tecnology.model.login.LoginData;
 
 import java.util.List;
 
@@ -49,6 +52,8 @@ public class LiveChatFragment extends Fragment {
     private EditText editTextMessage;
     private Button buttonSend;
     private ApiInterface apiInterface;
+
+    private String username;
 
 
     public LiveChatFragment() {
@@ -81,6 +86,9 @@ public class LiveChatFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        username = sharedPreferences.getString("username", null);
+
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
 
@@ -106,17 +114,18 @@ public class LiveChatFragment extends Fragment {
         buttonSend.setOnClickListener( v ->{
             String message = editTextMessage.getText().toString();
             if (!TextUtils.isEmpty(message)){
-                sendMessage("YourName", message);
+                sendMessage(message);
             }else {
                 Toast.makeText(getContext(), "Pesan tidak boleh kosong", Toast.LENGTH_SHORT).show();
             }
         });
+        AmbilChats();
 
 
     }
 
-    private void sendMessage(String name, String message) {
-        apiInterface.sendChat(name, message).enqueue(new Callback<ResponseBody>() {
+    private void sendMessage(String message) {
+        apiInterface.sendChat(username, message).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if ((response.isSuccessful())){

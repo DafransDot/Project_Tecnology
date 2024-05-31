@@ -8,12 +8,17 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.Activity;
 import androidx.fragment.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.se.omapi.Session;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewTreeObserver;
 
 import com.example.project_tecnology.databinding.ActivityMainBinding;
+import com.example.project_tecnology.model.login.LoginData;
 import com.example.project_tecnology.ui.BerandaFragment;
 import com.example.project_tecnology.ui.LiveChatFragment;
 import com.example.project_tecnology.ui.NewsFragment;
@@ -22,9 +27,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private ActivityMainBinding binding;
 
+    public String getUsername() {
+        return username;
+    }
+
     String username, name;
 
     SessionManager sessionManager;
+    private Fragment currentFra;
 
 
     @Override
@@ -39,14 +49,47 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             moveToLogin();
         }
 
+        username = sessionManager.getUserDetail().get(SessionManager.USERNAME);
+
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username",username ); // Ganti dengan username yang sesuai
+        editor.apply();
+
+
+
+
 
 //        ini fragment
         loadFragment(new BerandaFragment());
         BottomNavigationView navigationView = findViewById(R.id.navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
 
+        //Agar tidak fragment sembunyi ketika dibuka keyboard
 
+        final View rootView = findViewById(android.R.id.content);
+        rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Rect r = new Rect();
+                rootView.getWindowVisibleDisplayFrame(r);
+                int screenHeight = rootView.getRootView().getHeight();
+                int keypadHeight = screenHeight - r.bottom;
+                boolean isKeyboardVisible = keypadHeight > screenHeight * 0.15;
 
+                if (isKeyboardVisible) {
+                    if (currentFra != null){
+                        getSupportFragmentManager().beginTransaction().hide(currentFra).commit();
+                    }
+                }else {
+                    if (currentFra != null){
+                        getSupportFragmentManager().beginTransaction().show(currentFra).commit();
+                    }
+                }
+
+            }
+        });
 
     }
 
