@@ -22,6 +22,7 @@ import com.example.project_tecnology.model.login.LoginData;
 import com.example.project_tecnology.ui.BerandaFragment;
 import com.example.project_tecnology.ui.LiveChatFragment;
 import com.example.project_tecnology.ui.NewsFragment;
+import com.example.project_tecnology.ui.ProfilFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -50,11 +51,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
 
         username = sessionManager.getUserDetail().get(SessionManager.USERNAME);
+        name = sessionManager.getUserDetail().get(SessionManager.NAME);
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username",username ); // Ganti dengan username yang sesuai
+        editor.putString("username",username );
+        editor.putString("name", name);// Ganti dengan username yang sesuai
         editor.apply();
 
 
@@ -129,6 +132,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             fragment = new NewsFragment();
         }else if (item.getItemId() == R.id.fr_liveChat) {
             fragment = new LiveChatFragment();
+        } else if (item.getItemId() == R.id.fr_Profil) {
+            fragment = new ProfilFragment();
+
         }
 
         return loadFragment(fragment);

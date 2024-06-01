@@ -13,5 +13,9 @@
         android:id="@+id/fr_liveChat"
         android:icon="@drawable/comment"
         android:title="Community"/>
+    <item
+        android:id="@+id/fr_Profil"
+        android:icon="@drawable/baseline_account_circle_24"
+        android:title="Profil"/>
 
 </menu>

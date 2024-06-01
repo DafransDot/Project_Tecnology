@@ -1,5 +1,7 @@
 package com.example.project_tecnology.api;
 
+import android.service.autofill.UserData;
+
 import com.example.project_tecnology.model.liveChat.liveChat;
 import com.example.project_tecnology.model.login.Login;
 import com.example.project_tecnology.model.register.Register;
@@ -12,6 +14,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiInterface {
 
@@ -40,4 +43,7 @@ public interface ApiInterface {
 
     @GET("get_chat.php")
     Call<List<liveChat>> getChats();
+
+    @GET("login.php")
+    Call<List<Login>> getUserProfile();
 }

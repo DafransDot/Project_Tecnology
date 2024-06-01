@@ -109,7 +109,10 @@ public class LiveChatFragment extends Fragment {
         editTextMessage = view.findViewById(R.id.editTextMessage);
         buttonSend = view.findViewById(R.id.buttonSend);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setStackFromEnd(true); // Mengatur agar item ditampilkan dari bawah
+        linearLayoutManager.setReverseLayout(true); // Mengatur agar urutan item terbalik
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         buttonSend.setOnClickListener( v ->{
             String message = editTextMessage.getText().toString();
@@ -151,6 +154,7 @@ public class LiveChatFragment extends Fragment {
                     List<liveChat> liveChats = response.body();
                     chatadapter = new chatAdapter(liveChats);
                     recyclerView.setAdapter(chatadapter);
+                    recyclerView.scrollToPosition(liveChats.size() - 1);
                 }else {
                     Toast.makeText(getContext(), "Gagal mengambil pesan", Toast.LENGTH_SHORT).show();
                 }
