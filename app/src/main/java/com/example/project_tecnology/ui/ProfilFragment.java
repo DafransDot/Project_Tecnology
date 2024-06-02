@@ -1,6 +1,7 @@
 package com.example.project_tecnology.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -18,7 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.project_tecnology.Adapter.chatAdapter;
+import com.example.project_tecnology.Login_activity;
+import com.example.project_tecnology.MainActivity;
 import com.example.project_tecnology.R;
+import com.example.project_tecnology.SessionManager;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
 import com.example.project_tecnology.databinding.FragmentProfilBinding;
@@ -53,6 +57,8 @@ public class ProfilFragment extends Fragment {
     private Button buttonUpdateProfile, buttonLogout;
     private ApiInterface apiInterface;
     private LoginData loginData;
+    private SessionManager sessionManager;
+
 
     private  String username, name;
 
@@ -88,11 +94,14 @@ public class ProfilFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        
+        sessionManager = new SessionManager(requireActivity());
 
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         username = sharedPreferences.getString("username", null);
         name = sharedPreferences.getString("name", null);
+
 
 
     }
@@ -121,13 +130,25 @@ public class ProfilFragment extends Fragment {
 
 
         buttonUpdateProfile.setOnClickListener(v ->{
+            Intent intent = new Intent(getActivity(), UpdateProfilActivity.class);
+            startActivity(intent);
             Toast.makeText(getContext(), "Edit Profil", Toast.LENGTH_SHORT).show();
         } );
 
         buttonLogout.setOnClickListener(v ->{
-            Toast.makeText(getContext(), "Keluar", Toast.LENGTH_SHORT).show();
+            sessionManager.logoutSession();
+            moveToLogin();
+
+
         });
 
+    }
+
+    private void moveToLogin() {
+        Intent intent = new Intent(getActivity(), Login_activity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+        requireActivity().finish();
     }
 
 

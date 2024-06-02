@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.UpdateProfilActivity"
+    android:orientation="vertical">
+    
+    <Button
+        android:id="@+id/buttonBackToProfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kembali"
+        />
+    
+    <ImageView
+        android:id="@+id/imagesViewUpdateProfil"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@color/black"
+        android:layout_margin="30dp"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:id="@+id/UploadImages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="upload Images"
+        android:layout_gravity="center"
+        />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:id="@+id/EditTextUpdateUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"/>
+
+    <EditText
+        android:paddingTop="20dp"
+        android:id="@+id/EditTextUpdateEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"/>
+
+    <EditText
+        android:paddingTop="20dp"
+        android:id="@+id/EditTextUpdatePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"/>
+
+    <EditText
+        android:paddingTop="20dp"
+        android:id="@+id/EditTextUpdateNoPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nomor Phone"/>
+
+    <Button
+        android:id="@+id/buttonSubmitUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="submit"/>
+
+        
+
+</LinearLayout>

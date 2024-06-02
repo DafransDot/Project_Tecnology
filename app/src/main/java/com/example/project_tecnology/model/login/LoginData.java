@@ -12,6 +12,16 @@ public class LoginData {
 
 	@SerializedName("username")
 	private String username;
+	@SerializedName("phone")
+	private String phone;
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 	public void setUserId(int userId){
 		this.userId = userId;

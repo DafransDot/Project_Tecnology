@@ -4,6 +4,7 @@ import android.service.autofill.UserData;
 
 import com.example.project_tecnology.model.liveChat.liveChat;
 import com.example.project_tecnology.model.login.Login;
+import com.example.project_tecnology.model.login.LoginData;
 import com.example.project_tecnology.model.register.Register;
 
 import java.util.List;
@@ -46,4 +47,16 @@ public interface ApiInterface {
 
     @GET("login.php")
     Call<List<Login>> getUserProfile();
+
+
+    @FormUrlEncoded
+    @POST("update_profile.php")
+    Call<LoginData> updateProfile(
+            @Field("id") int id,
+            @Field("username") String username,
+            @Field("name") String name,
+            @Field("password") String password,
+            @Field("phone") String phone,
+            @Field("profile_photo_path") String profilePhotoPath
+    );
 }

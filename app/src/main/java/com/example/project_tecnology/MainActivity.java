@@ -1,5 +1,7 @@
 package com.example.project_tecnology;
 
+import static com.example.project_tecnology.SessionManager.USER_ID;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return username;
     }
 
-    String username, name;
+    String username, name, user_id;
 
     SessionManager sessionManager;
     private Fragment currentFra;
@@ -52,12 +54,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         username = sessionManager.getUserDetail().get(SessionManager.USERNAME);
         name = sessionManager.getUserDetail().get(SessionManager.NAME);
+        user_id = sessionManager.getUserDetail().get(USER_ID);
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username",username );
+        editor.putString("user_id", (user_id));
         editor.putString("name", name);// Ganti dengan username yang sesuai
+
         editor.apply();
 
 
@@ -99,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
    
 
 //    ini login register
-    private void moveToLogin() {
+    public void moveToLogin() {
         Intent intent = new Intent(MainActivity.this, Login_activity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
@@ -112,10 +117,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.actionLogout){
             sessionManager.logoutSession();
             moveToLogin();
-        }
+
         return super.onOptionsItemSelected(item);
     }
 
