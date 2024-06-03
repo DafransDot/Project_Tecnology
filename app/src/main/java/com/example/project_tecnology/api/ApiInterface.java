@@ -52,11 +52,11 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("update_profile.php")
     Call<LoginData> updateProfile(
-            @Field("id") int id,
-            @Field("username") String username,
-            @Field("name") String name,
-            @Field("password") String password,
-            @Field("phone") String phone,
-            @Field("profile_photo_path") String profilePhotoPath
+            @Path("id") int id,
+            @Path("username") String username,
+            @Path("name") String name,
+            @Path("password") String password,
+            @Path("phone") String phone,
+            @Path("profile_photo_path") String profilePhotoPath
     );
 }

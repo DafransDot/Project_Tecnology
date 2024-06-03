@@ -3,6 +3,7 @@ package com.example.project_tecnology.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project_tecnology.MainActivity;
@@ -29,6 +31,7 @@ public class UpdateProfilActivity extends AppCompatActivity {
     private TextView uploadImages;
     private EditText editTextUpdateUsername, editTextUpdateEmail, editTextUpdatePassword, editTextUpdateNoPhone;
     private ApiInterface apiInterface;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,14 @@ public class UpdateProfilActivity extends AppCompatActivity {
             updateProfile(username, name, password, phone, profilePhotoPath);
         });
 
+        uploadImages.setOnClickListener(v ->{
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            intent.setType("image/*");
+            startActivityForResult(intent,1);
+        });
+
+
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
     }
 
@@ -76,6 +87,16 @@ public class UpdateProfilActivity extends AppCompatActivity {
         editTextUpdateEmail.setText(name);
         editTextUpdatePassword.setText(password);
         editTextUpdateNoPhone.setText(phone);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && data != null){
+            uri = data.getData();
+            imageViewUpdateProfile.setImageURI(uri);
+
+        }
     }
 
     private void updateProfile(String username, String name, String password, String phone, String profilePhotoPath) {
