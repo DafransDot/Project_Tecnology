@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         if (item.getItemId() == R.id.fr_home) {
             fragment = new BerandaFragment();
-        } else if (item.getItemId() == R.id.fr_news) {
+        } else if (item.getItemId() == R.id.fr_shop) {
             fragment = new NewsFragment();
         } else if (item.getItemId() == R.id.fr_liveChat) {
             fragment = new LiveChatFragment();

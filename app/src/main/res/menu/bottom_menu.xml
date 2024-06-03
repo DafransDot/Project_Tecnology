@@ -6,9 +6,9 @@
         android:icon="@drawable/home"
         android:title="Home"/>
     <item
-        android:id="@+id/fr_news"
-        android:icon="@drawable/newspaper"
-        android:title="News"/>
+        android:id="@+id/fr_shop"
+        android:icon="@drawable/marketplace_alt"
+        android:title="Shop"/>
     <item
         android:id="@+id/fr_liveChat"
         android:icon="@drawable/comment"
