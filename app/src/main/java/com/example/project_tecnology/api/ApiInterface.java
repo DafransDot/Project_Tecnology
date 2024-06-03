@@ -2,6 +2,7 @@ package com.example.project_tecnology.api;
 
 import android.service.autofill.UserData;
 
+import com.example.project_tecnology.model.ApiResponse;
 import com.example.project_tecnology.model.liveChat.liveChat;
 import com.example.project_tecnology.model.login.Login;
 import com.example.project_tecnology.model.login.LoginData;
@@ -9,13 +10,18 @@ import com.example.project_tecnology.model.register.Register;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
@@ -45,18 +51,18 @@ public interface ApiInterface {
     @GET("get_chat.php")
     Call<List<liveChat>> getChats();
 
-    @GET("login.php")
-    Call<List<Login>> getUserProfile();
+    @GET("get_user.php")
+    Call<ApiResponse> getUserProfile(@Query("id") int id);
 
 
-    @FormUrlEncoded
+    @Multipart
     @POST("update_profile.php")
     Call<LoginData> updateProfile(
-            @Path("id") int id,
-            @Path("username") String username,
-            @Path("name") String name,
-            @Path("password") String password,
-            @Path("phone") String phone,
-            @Path("profile_photo_path") String profilePhotoPath
+            @Part("id") RequestBody id,
+            @Part("username") RequestBody username,
+            @Part("name") RequestBody name,
+            @Part("password") RequestBody password,
+            @Part("phone") RequestBody phone,
+            @Part MultipartBody.Part profilePhoto
     );
 }

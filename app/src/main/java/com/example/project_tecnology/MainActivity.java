@@ -1,5 +1,6 @@
 package com.example.project_tecnology;
 
+//import static com.example.project_tecnology.SessionManager.PHOTO;
 import static com.example.project_tecnology.SessionManager.USER_ID;
 
 import androidx.annotation.NonNull;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return username;
     }
 
-    String username, name, user_id;
+    String username, name, user_id, Photo;
 
     SessionManager sessionManager;
     private Fragment currentFra;
@@ -49,12 +50,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         username = sessionManager.getUserDetail().get(SessionManager.USERNAME);
         name = sessionManager.getUserDetail().get(SessionManager.NAME);
         user_id = sessionManager.getUserDetail().get(USER_ID); // Convert to int
+//        Photo = sessionManager.getUserDetail().get(PHOTO);
+
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username", username);
         editor.putString("user_id", user_id);
         editor.putString("name", name);
+//        editor.putString("photo", Photo);
 
         editor.apply();
 

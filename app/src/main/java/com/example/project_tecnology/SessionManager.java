@@ -19,6 +19,7 @@ public class SessionManager {
     public static final String USERNAME = "username";
     public static final String NAME = "Name";
     public static final String PHONE = "phone";
+//    public static final String PHOTO = "photo";
 
     public SessionManager(Context context) {
         this._context = context;
@@ -32,6 +33,7 @@ public class SessionManager {
         editor.putString(USERNAME, user.getUsername());
         editor.putString(NAME, user.getName());
         editor.putString(PHONE, user.getPhone());
+//        editor.putString(PHOTO, user.getProfilePhotoPath());
         editor.commit();
 
         Log.d("SessionManager", "User ID saved: " + user.getUserId());
@@ -43,6 +45,7 @@ public class SessionManager {
         user.put(USERNAME, sharedPreferences.getString(USERNAME, null));
         user.put(NAME, sharedPreferences.getString(NAME, null));
         user.put(PHONE, sharedPreferences.getString(PHONE, null));
+//        user.put(PHOTO, sharedPreferences.getString(PHOTO, null));
         return user;
     }
 

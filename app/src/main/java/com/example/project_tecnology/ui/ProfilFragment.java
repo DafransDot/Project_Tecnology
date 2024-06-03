@@ -3,6 +3,8 @@ package com.example.project_tecnology.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.service.autofill.UserData;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +30,7 @@ import com.example.project_tecnology.SessionManager;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
 import com.example.project_tecnology.databinding.FragmentProfilBinding;
+import com.example.project_tecnology.model.ApiResponse;
 import com.example.project_tecnology.model.liveChat.liveChat;
 import com.example.project_tecnology.model.login.Login;
 import com.example.project_tecnology.model.login.LoginData;
@@ -60,7 +65,7 @@ public class ProfilFragment extends Fragment {
     private SessionManager sessionManager;
 
 
-    private  String username, name;
+    private  String username, name, Photo;
 
 
 
@@ -100,7 +105,12 @@ public class ProfilFragment extends Fragment {
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         username = sharedPreferences.getString("username", null);
-        name = sharedPreferences.getString("user", null);
+        name = sharedPreferences.getString("name", null);
+
+//        Photo = sharedPreferences.getString("Photo", null);
+
+
+
 
 
 
@@ -127,9 +137,6 @@ public class ProfilFragment extends Fragment {
 //        Login_activity loginActivity = new Login_activity();
 //        int user = loginActivity.id;
 
-        textViewUsername.setText(username);
-        textViewEmail.setText(name);
-
 
         buttonUpdateProfile.setOnClickListener(v ->{
             Intent intent = new Intent(getActivity(), UpdateProfilActivity.class);
@@ -144,7 +151,14 @@ public class ProfilFragment extends Fragment {
 
         });
 
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        String userId = sharedPreferences.getString("user", null);
+        int id = Integer.parseInt(userId);
+        Log.d("Profile","awowokwkowkowkow " + id);
+        getUserProfile(id);
+
     }
+
 
     private void moveToLogin() {
         Intent intent = new Intent(getActivity(), Login_activity.class);
@@ -152,6 +166,53 @@ public class ProfilFragment extends Fragment {
         startActivity(intent);
         requireActivity().finish();
     }
+    public Bitmap decodeBase64ToBitmap ( String base64str) throws  IllegalArgumentException{
+        byte[] decodedByte = Base64.decode(base64str, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(decodedByte, 0 , decodedByte.length);
+    }
+
+    private void getUserProfile(int userId) {
+        apiInterface.getUserProfile(userId).enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ApiResponse apiResponse = response.body();
+                    LoginData loginData = apiResponse.getData();
+
+                    if (loginData != null) {
+                        username = loginData.getUsername();
+                        name = loginData.getName();
+                        Photo = loginData.getProfilePhotoPath();
+
+                        textViewUsername.setText(username);
+                        textViewEmail.setText(name);
+
+                        if (Photo != null && !Photo.isEmpty()) {
+                            try {
+                                String base64Image = Photo.substring(Photo.indexOf(",") + 1);
+                                byte[] imageBytes = Base64.decode(base64Image, Base64.DEFAULT);
+                                Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                                imageViewProfile.setImageBitmap(bitmap);
+                            } catch (Exception e) {
+                                Log.e("Profil", "Error decoding image", e);
+                            }
+                        } else {
+                            Log.d("Profil", "Photo is null or empty");
+                        }
+                    } else {
+                        Log.d("Profil", "No data in LoginData");
+                    }
+                } else {
+                    Log.d("Profil", "Failed to get user profile");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                Log.e("Profil", "API call failed", t);
+            }
+        });
+    }
 
 
-}
+    }

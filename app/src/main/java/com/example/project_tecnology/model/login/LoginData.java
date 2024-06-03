@@ -15,6 +15,16 @@ public class LoginData {
 	@SerializedName("phone")
 	private String phone;
 
+	@SerializedName("profile_photo_path")
+	private String profilePhotoPath;
+	public String getProfilePhotoPath() {
+		return profilePhotoPath;
+	}
+
+	public void setProfilePhotoPath(String profilePhotoPath) {
+		this.profilePhotoPath = profilePhotoPath;
+	}
+
 	public String getPhone() {
 		return phone;
 	}
@@ -46,4 +56,6 @@ public class LoginData {
 	public String getUsername(){
 		return username;
 	}
+
+
 }

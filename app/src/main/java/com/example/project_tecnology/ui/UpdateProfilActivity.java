@@ -15,17 +15,24 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project_tecnology.Adapter.FileUtil;
 import com.example.project_tecnology.MainActivity;
 import com.example.project_tecnology.R;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
 import com.example.project_tecnology.model.login.LoginData;
 
+import java.io.File;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UpdateProfilActivity extends AppCompatActivity {
+    private static final int PICK_IMAGE_REQUEST = 1;
     private Button buttonBackToProfile, buttonSubmitUpdate;
     private ImageView imageViewUpdateProfile;
     private TextView uploadImages;
@@ -60,88 +67,73 @@ public class UpdateProfilActivity extends AppCompatActivity {
             String name = editTextUpdateEmail.getText().toString().isEmpty() ? sharedPreferences.getString("name", "") : editTextUpdateEmail.getText().toString();
             String password = editTextUpdatePassword.getText().toString().isEmpty() ? sharedPreferences.getString("password", "") : editTextUpdatePassword.getText().toString();
             String phone = editTextUpdateNoPhone.getText().toString().isEmpty() ? sharedPreferences.getString("phone", "") : editTextUpdateNoPhone.getText().toString();
-            String profilePhotoPath = uploadImages.getText().toString().isEmpty() ? null : uploadImages.getText().toString();
-
-            updateProfile(username, name, password, phone, profilePhotoPath);
+            updateProfile(username, name, password, phone);
         });
 
-        uploadImages.setOnClickListener(v ->{
+        uploadImages.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
-            startActivityForResult(intent,1);
+            startActivityForResult(intent, PICK_IMAGE_REQUEST);
         });
-
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
     }
 
     private void loadProfile() {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        String username = sharedPreferences.getString("username", "");
-        String name = sharedPreferences.getString("name", "");
-        String password = sharedPreferences.getString("password", "");
-        String phone = sharedPreferences.getString("phone", "");
 
-        editTextUpdateUsername.setText(username);
-        editTextUpdateEmail.setText(name);
-        editTextUpdatePassword.setText(password);
-        editTextUpdateNoPhone.setText(phone);
+        editTextUpdateUsername.setText("");
+        editTextUpdateEmail.setText("");
+        editTextUpdatePassword.setText("");
+        editTextUpdateNoPhone.setText("");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && data != null){
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             uri = data.getData();
             imageViewUpdateProfile.setImageURI(uri);
-
         }
     }
 
-    private void updateProfile(String username, String name, String password, String phone, String profilePhotoPath) {
+    private void updateProfile(String username, String name, String password, String phone) {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String userId = sharedPreferences.getString("user", null);
 
-        Log.d("UpdateProfilActivity", "User ID before update: " + userId);
-        if (userId != null) { // Check if userId is not null
-            int id;
-            try {
-                id = Integer.parseInt(userId); // Parse userId to Integer
-            } catch (NumberFormatException e) {
-                Toast.makeText(this, "User ID is not a valid integer", Toast.LENGTH_SHORT).show();
-                return;
+        RequestBody id = RequestBody.create(MediaType.parse("text/plain"), userId);
+        RequestBody usernameBody = RequestBody.create(MediaType.parse("text/plain"), username);
+        RequestBody nameBody = RequestBody.create(MediaType.parse("text/plain"), name);
+        RequestBody passwordBody = RequestBody.create(MediaType.parse("text/plain"), password);
+        RequestBody phoneBody = RequestBody.create(MediaType.parse("text/plain"), phone);
+
+        MultipartBody.Part profilePhoto = null;
+        if (uri != null) {
+            String filePathStr = FileUtil.getPath(this, uri);
+            if (filePathStr != null) {
+                File file = new File(filePathStr);
+                RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(uri)), file);
+                profilePhoto = MultipartBody.Part.createFormData("profile_photo", file.getName(), requestFile);
             }
+        }
 
-
-
-            apiInterface.updateProfile(id, username, name, password, phone, profilePhotoPath).enqueue(new Callback<LoginData>() {
-                @Override
-                public void onResponse(Call<LoginData> call, Response<LoginData> response) {
-                    if (response.isSuccessful()) {
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("username", username);
-                        editor.putString("name", name);
-                        editor.putString("password", password);
-                        editor.putString("phone", phone);
-                        editor.apply();
-
-                        loadProfile();
-                        Intent intent = new Intent(UpdateProfilActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        Toast.makeText(UpdateProfilActivity.this, "Sukses", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(UpdateProfilActivity.this, "Gagal mengirim pesan", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<LoginData> call, Throwable t) {
+        apiInterface.updateProfile(id, usernameBody, nameBody, passwordBody, phoneBody, profilePhoto).enqueue(new Callback<LoginData>() {
+            @Override
+            public void onResponse(Call<LoginData> call, Response<LoginData> response) {
+                if (response.isSuccessful()) {
+                    loadProfile();
+                    Intent intent = new Intent(UpdateProfilActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(UpdateProfilActivity.this, "Sukses", Toast.LENGTH_SHORT).show();
+                } else {
                     Toast.makeText(UpdateProfilActivity.this, "Gagal mengirim pesan", Toast.LENGTH_SHORT).show();
                 }
-            });
-        } else {
-            Toast.makeText(this, "User ID not found", Toast.LENGTH_SHORT).show();
-        }
+            }
+
+            @Override
+            public void onFailure(Call<LoginData> call, Throwable t) {
+                Toast.makeText(UpdateProfilActivity.this, "Gagal mengirim pesan", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
