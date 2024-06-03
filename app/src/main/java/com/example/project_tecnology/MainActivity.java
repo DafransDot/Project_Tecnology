@@ -19,7 +19,7 @@ import android.view.ViewTreeObserver;
 import com.example.project_tecnology.databinding.ActivityMainBinding;
 import com.example.project_tecnology.ui.BerandaFragment;
 import com.example.project_tecnology.ui.LiveChatFragment;
-import com.example.project_tecnology.ui.NewsFragment;
+import com.example.project_tecnology.ui.ShopFragment;
 import com.example.project_tecnology.ui.ProfilFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (item.getItemId() == R.id.fr_home) {
             fragment = new BerandaFragment();
         } else if (item.getItemId() == R.id.fr_shop) {
-            fragment = new NewsFragment();
+            fragment = new ShopFragment();
         } else if (item.getItemId() == R.id.fr_liveChat) {
             fragment = new LiveChatFragment();
         } else if (item.getItemId() == R.id.fr_Profil) {

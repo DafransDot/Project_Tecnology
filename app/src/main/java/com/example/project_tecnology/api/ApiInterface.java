@@ -1,8 +1,7 @@
 package com.example.project_tecnology.api;
 
-import android.service.autofill.UserData;
-
 import com.example.project_tecnology.model.ApiResponse;
+import com.example.project_tecnology.model.barang.BarangData;
 import com.example.project_tecnology.model.liveChat.liveChat;
 import com.example.project_tecnology.model.login.Login;
 import com.example.project_tecnology.model.login.LoginData;
@@ -20,7 +19,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
@@ -64,5 +62,15 @@ public interface ApiInterface {
             @Part("password") RequestBody password,
             @Part("phone") RequestBody phone,
             @Part MultipartBody.Part profilePhoto
+    );
+
+
+    @Multipart
+    @POST("post_barang.php")
+    Call<BarangData> BarangResponse(
+            @Part("nama_barang") RequestBody nama_barang,
+            @Part("deskripsi") RequestBody deskripsi,
+            @Part MultipartBody.Part photo_barang
+
     );
 }
