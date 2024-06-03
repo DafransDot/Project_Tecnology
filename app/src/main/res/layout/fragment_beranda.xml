@@ -156,12 +156,14 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/IMAGEVIEWApplewatch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/group_12"
                 android:paddingLeft="15dp"/>
 
             <ImageView
+                android:id="@+id/IMAGEVIEWAirpodsMax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/group_11"
