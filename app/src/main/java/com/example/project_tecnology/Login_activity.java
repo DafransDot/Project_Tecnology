@@ -25,7 +25,7 @@ public class Login_activity extends AppCompatActivity {
     String Username, Password;
     ApiInterface apiInterface;
     private SessionManager sessionManager;
-    private Integer id ;
+    public Integer id ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class Login_activity extends AppCompatActivity {
                     LoginData loginData = response.body().getData();
                     id = loginData.getUserId();
                     sessionManager.createLoginSession(loginData);
-                    Log.d("Login Activity", "Login successfully");
+                    Log.d("Login Activity", "Login successfully"+id);
                     Toast.makeText(Login_activity.this, response.body().getData().getName(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login_activity.this, MainActivity.class);
                     startActivity(intent);

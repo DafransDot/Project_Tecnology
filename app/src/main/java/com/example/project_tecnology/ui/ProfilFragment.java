@@ -100,7 +100,7 @@ public class ProfilFragment extends Fragment {
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         username = sharedPreferences.getString("username", null);
-        name = sharedPreferences.getString("name", null);
+        name = sharedPreferences.getString("user", null);
 
 
 
@@ -124,6 +124,8 @@ public class ProfilFragment extends Fragment {
         buttonLogout = view.findViewById(R.id.buttonLogout);
 
 
+//        Login_activity loginActivity = new Login_activity();
+//        int user = loginActivity.id;
 
         textViewUsername.setText(username);
         textViewEmail.setText(name);
