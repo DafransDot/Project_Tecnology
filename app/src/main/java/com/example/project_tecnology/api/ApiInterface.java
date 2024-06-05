@@ -1,7 +1,8 @@
 package com.example.project_tecnology.api;
 
 import com.example.project_tecnology.model.ApiResponse;
-import com.example.project_tecnology.model.barang.BarangData;
+import com.example.project_tecnology.model.barang.BarangResponse;
+import com.example.project_tecnology.model.barang.DataBarang;
 import com.example.project_tecnology.model.liveChat.liveChat;
 import com.example.project_tecnology.model.login.Login;
 import com.example.project_tecnology.model.login.LoginData;
@@ -18,6 +19,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
 
@@ -67,10 +69,24 @@ public interface ApiInterface {
 
     @Multipart
     @POST("post_barang.php")
-    Call<BarangData> BarangResponse(
+    Call<BarangResponse> BarangResponse(
             @Part("nama_barang") RequestBody nama_barang,
             @Part("deskripsi") RequestBody deskripsi,
             @Part MultipartBody.Part photo_barang
-
     );
+
+    @GET("get_barang.php")
+    Call<BarangResponse> getBarang();
+
+
+    @Multipart
+    @POST("update_barang.php")
+    Call<DataBarang> updateBarang(
+            @Part("id") RequestBody id,
+            @Part("nama_barang") RequestBody nama_barang,
+            @Part("deskripsi") RequestBody deskripsi,
+            @Part MultipartBody.Part photo_barang
+    );
+
+
 }

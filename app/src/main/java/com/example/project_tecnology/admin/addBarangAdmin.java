@@ -10,11 +10,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.project_tecnology.Adapter.FileUtil;
-import com.example.project_tecnology.R;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
 import com.example.project_tecnology.databinding.ActivityAddBarangAdminBinding;
-import com.example.project_tecnology.model.barang.BarangData;
+import com.example.project_tecnology.model.barang.BarangResponse;
 
 import java.io.File;
 
@@ -61,9 +60,6 @@ public class addBarangAdmin extends AppCompatActivity {
             AddBarang(nama_barang,deskripsi);
         });
 
-
-
-
     }
 
     @Override
@@ -91,12 +87,12 @@ public class addBarangAdmin extends AppCompatActivity {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<BarangData> call = apiInterface.BarangResponse(nama_barangBody, deskripsiBody,photo_barang);
-        call.enqueue(new Callback<BarangData>() {
+        Call<BarangResponse> call = apiInterface.BarangResponse(nama_barangBody, deskripsiBody,photo_barang);
+        call.enqueue(new Callback<BarangResponse>() {
             @Override
-            public void onResponse(Call<BarangData> call, Response<BarangData> response) {
+            public void onResponse(Call<BarangResponse> call, Response<BarangResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    BarangData responseData = response.body();
+                    BarangResponse responseData = response.body();
                     if (responseData.isStatus()) {
                         Toast.makeText(addBarangAdmin.this, responseData.getMessage(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(addBarangAdmin.this, AdminActivity.class);
@@ -117,7 +113,7 @@ public class addBarangAdmin extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<BarangData> call, Throwable t) {
+            public void onFailure(Call<BarangResponse> call, Throwable t) {
                 Toast.makeText(addBarangAdmin.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 Log.d("RetrofitError", "Failure: " + t.getLocalizedMessage());
             }

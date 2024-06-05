@@ -18,30 +18,33 @@
         android:theme="@style/Theme.Project_Tecnology"
         tools:targetApi="31">
         <activity
+            android:name=".admin.UpdateBarangActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.addBarangAdmin"
             android:exported="false" />
         <activity
             android:name=".admin.AdminActivity"
-            android:exported="true" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-
-        </activity>
-        <activity
-            android:name=".ui.UpdateProfilActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ui.splashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.UpdateProfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.splashActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".register_activity"

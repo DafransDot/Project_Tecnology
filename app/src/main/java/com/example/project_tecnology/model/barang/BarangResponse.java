@@ -2,10 +2,11 @@ package com.example.project_tecnology.model.barang;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BarangData{
+import java.util.List;
 
+public class BarangResponse {
 	@SerializedName("data")
-	private DataResponse data;
+	private List<DataBarang> data;
 
 	@SerializedName("message")
 	private String message;
@@ -13,12 +14,12 @@ public class BarangData{
 	@SerializedName("status")
 	private boolean status;
 
-	public void setData(DataResponse data){
-		this.data = data;
+	public List<DataBarang> getData() {
+		return data;
 	}
 
-	public DataResponse getData(){
-		return data;
+	public void setData(List<DataBarang> data) {
+		this.data = data;
 	}
 
 	public void setMessage(String message){

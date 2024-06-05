@@ -2,10 +2,21 @@ package com.example.project_tecnology.model.barang;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataResponse {
+public class DataBarang {
 
 	@SerializedName("photo_barang")
-	private Object photoBarang;
+	private String photoBarang; // Ensure this is a String for Base64
+
+	@SerializedName("id")
+	private int id;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	@SerializedName("nama_barang")
 	private String namaBarang;
@@ -13,11 +24,11 @@ public class DataResponse {
 	@SerializedName("deskripsi")
 	private String deskripsi;
 
-	public void setPhotoBarang(Object photoBarang){
+	public void setPhotoBarang(String photoBarang){
 		this.photoBarang = photoBarang;
 	}
 
-	public Object getPhotoBarang(){
+	public String getPhotoBarang(){
 		return photoBarang;
 	}
 

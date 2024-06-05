@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.UpdateBarangActivity"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kembali"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Barang"
+        android:textAlignment="center"/>
+
+    <ImageView
+        android:id="@+id/imagesViewUpdate"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@color/black"
+        android:layout_margin="30dp"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:id="@+id/UploadImages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="upload Images"
+        android:layout_gravity="center"
+        />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:id="@+id/EditTextUpdateNamaBarang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="NAma BArang"/>
+
+    <EditText
+        android:paddingTop="20dp"
+        android:id="@+id/EditTextUpdateDeskripsi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Deskripsi"/>
+
+
+    <Button
+        android:id="@+id/buttonSubmitUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="submit"/>
+
+
+</LinearLayout>

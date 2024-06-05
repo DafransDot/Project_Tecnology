@@ -154,6 +154,7 @@ public class ProfilFragment extends Fragment {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String userId = sharedPreferences.getString("user", null);
         int id = Integer.parseInt(userId);
+
         Log.d("Profile","awowokwkowkowkow " + id);
         getUserProfile(id);
 

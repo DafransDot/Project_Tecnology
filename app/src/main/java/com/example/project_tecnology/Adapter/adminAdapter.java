@@ -1,8 +1,12 @@
 package com.example.project_tecnology.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +18,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project_tecnology.R;
-import com.example.project_tecnology.model.barang.DataResponse;
+import com.example.project_tecnology.admin.UpdateBarangActivity;
+import com.example.project_tecnology.model.barang.DataBarang;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class adminAdapter extends RecyclerView.Adapter<adminAdapter.AdminViewHolder> {
 
-    private final List<DataResponse> barangList;
+    private List<DataBarang> dataBarang;
+    private ArrayList<DataBarang> arrayList;
+    private Context context;
 
-    public adminAdapter(List<DataResponse> barangList) {
-        this.barangList = barangList;
+    public adminAdapter(Context context, List<DataBarang> dataBarang) {
+        this.context = context;
+        this.dataBarang = dataBarang;
     }
 
     @NonNull
@@ -35,39 +44,62 @@ public class adminAdapter extends RecyclerView.Adapter<adminAdapter.AdminViewHol
 
     @Override
     public void onBindViewHolder(@NonNull adminAdapter.AdminViewHolder holder, int position) {
-        DataResponse dataResponse = barangList.get(position);
-        //Disini kemungkinan Salah
-        String PhotoBarang = String.valueOf(dataResponse.getPhotoBarang());
-        String base64Image = PhotoBarang.substring(PhotoBarang.indexOf(",") + 1);
-        byte[] imageBytes = Base64.decode(base64Image, Base64.DEFAULT);
-        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-        holder.item_admin_ImageView.setImageBitmap(bitmap);
-        holder.item_admin_NamaBarang.setText(dataResponse.getNamaBarang());
-        holder.item_admin_Deskripsi.setText(dataResponse.getDeskripsi());
+        DataBarang barang = dataBarang.get(position);
 
+        holder.tvNama_barang.setText(barang.getNamaBarang());
+        holder.tvDescripsi.setText(barang.getDeskripsi());
+
+        // Decode Base64 string to Bitmap
+        String photoBarang = barang.getPhotoBarang();
+        if (photoBarang != null && !photoBarang.isEmpty()) {
+            try {
+                Bitmap bitmap = decodeBase64ToBitmap(photoBarang);
+                holder.photo_gambar.setImageBitmap(bitmap);
+            } catch (IllegalArgumentException e) {
+                Log.e("adminAdapter", "Invalid Base64 image string", e);
+            }
+        }
+
+        holder.BtnEdit.setOnClickListener(v -> {
+            String id = String.valueOf(barang.getId());
+            Intent intent = new Intent(context, UpdateBarangActivity.class);
+
+//            SharedPreferences sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//            SharedPreferences.Editor editor = sharedPreferences.edit();
+//            editor.putString("ID", id);
+            intent.putExtra("ID", id);
+            Log.d("adminAdapter", "ID: " + id);
+            context.startActivity(intent);
+        });
+    }
+
+    private Bitmap decodeBase64ToBitmap(String base64Str) throws IllegalArgumentException {
+        byte[] decodedBytes = Base64.decode(base64Str, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 
     @Override
     public int getItemCount() {
-        return barangList.size();
+        return dataBarang.size();
+    }
+
+    public void setDataBarang(List<DataBarang> dataBarang) {
+        this.dataBarang = dataBarang;
+        notifyDataSetChanged();
     }
 
     public class AdminViewHolder extends RecyclerView.ViewHolder {
-        final TextView item_admin_NamaBarang;
-        final ImageView item_admin_ImageView;
-        final TextView item_admin_Deskripsi;
-        Button item_admin_Edit;
-        Button item_admin_Delete;
-        
+        ImageView photo_gambar;
+        TextView tvNama_barang, tvDescripsi;
+        Button BtnEdit, BtnDelete;
+
         public AdminViewHolder(@NonNull View itemView) {
             super(itemView);
-            item_admin_NamaBarang = itemView.findViewById(R.id.item_admin_NamaBarang);
-            item_admin_Deskripsi = itemView.findViewById(R.id.item_admin_Deskripsi);
-            item_admin_ImageView = itemView.findViewById(R.id.item_admin_ImageView);
-            item_admin_Edit = itemView.findViewById(R.id.item_admin_Edit);
-            item_admin_Delete = itemView.findViewById(R.id.item_admin_Delete);
-            
+            photo_gambar = itemView.findViewById(R.id.item_admin_ImageView);
+            tvNama_barang = itemView.findViewById(R.id.item_admin_NamaBarang);
+            tvDescripsi = itemView.findViewById(R.id.item_admin_Deskripsi);
+            BtnEdit = itemView.findViewById(R.id.item_admin_Edit);
+            BtnDelete = itemView.findViewById(R.id.item_admin_Delete);
         }
-
     }
 }
