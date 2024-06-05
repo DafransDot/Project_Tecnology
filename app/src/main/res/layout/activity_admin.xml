@@ -7,11 +7,31 @@
     tools:context=".admin.AdminActivity"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <Button
         android:id="@+id/btnTambahBarang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tambah Barang" />
+
+        <EditText
+            android:id="@+id/etCariBarang"
+            android:drawableStart="@drawable/baseline_ads_click_24"
+            android:drawablePadding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Cari"/>
+        <Button
+            android:id="@+id/btnCariBarang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cari"/>
+    </LinearLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewadmin"

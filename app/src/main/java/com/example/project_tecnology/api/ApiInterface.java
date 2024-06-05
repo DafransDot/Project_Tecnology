@@ -76,7 +76,7 @@ public interface ApiInterface {
     );
 
     @GET("get_barang.php")
-    Call<BarangResponse> getBarang();
+    Call<BarangResponse> getBarang(@Query("nama_barang") String namaBarang);
 
 
     @Multipart
