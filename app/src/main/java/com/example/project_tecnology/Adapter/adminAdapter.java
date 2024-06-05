@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project_tecnology.R;
+import com.example.project_tecnology.admin.DeleteBarangActivity;
 import com.example.project_tecnology.admin.UpdateBarangActivity;
 import com.example.project_tecnology.model.barang.DataBarang;
 
@@ -63,6 +64,18 @@ public class adminAdapter extends RecyclerView.Adapter<adminAdapter.AdminViewHol
         holder.BtnEdit.setOnClickListener(v -> {
             String id = String.valueOf(barang.getId());
             Intent intent = new Intent(context, UpdateBarangActivity.class);
+
+//            SharedPreferences sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//            SharedPreferences.Editor editor = sharedPreferences.edit();
+//            editor.putString("ID", id);
+            intent.putExtra("ID", id);
+            Log.d("adminAdapter", "ID: " + id);
+            context.startActivity(intent);
+        });
+
+        holder.BtnDelete.setOnClickListener(v ->{
+            String id = String.valueOf(barang.getId());
+            Intent intent = new Intent(context, DeleteBarangActivity.class);
 
 //            SharedPreferences sharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 //            SharedPreferences.Editor editor = sharedPreferences.edit();

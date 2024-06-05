@@ -89,4 +89,9 @@ public interface ApiInterface {
     );
 
 
+    @FormUrlEncoded
+    @POST("delete_barang.php")
+    Call<DataBarang> deleteBarang(
+            @Field("id") int id);
+
 }
