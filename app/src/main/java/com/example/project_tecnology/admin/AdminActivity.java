@@ -57,8 +57,8 @@ public class AdminActivity extends AppCompatActivity {
             listBarang(query);
         });
 
-        listBarang(null);
-        Log.d("list barang", "onCreate: ");
+            listBarang(null);
+            Log.d("list barang", "onCreate: ");
     }
 
     private void listBarang(String namaBarang) {

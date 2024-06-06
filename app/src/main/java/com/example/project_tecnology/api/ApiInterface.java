@@ -95,4 +95,8 @@ public interface ApiInterface {
     Call<DataBarang> deleteBarang(
             @Field("id") int id);
 
+    @GET("get_barang_kategori.php")
+    Call<BarangResponse> getBarangByCategory
+            (@Query("kategori_id") int kategoriId);
+
 }

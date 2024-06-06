@@ -24,6 +24,18 @@ public class DataBarang {
 	@SerializedName("deskripsi")
 	private String deskripsi;
 
+
+	@SerializedName("kategori_id")
+	private int kategoriId;
+
+	public int getKategoriId() {
+		return kategoriId;
+	}
+
+	public void setKategoriId(int kategoriId) {
+		this.kategoriId = kategoriId;
+	}
+
 	public void setPhotoBarang(String photoBarang){
 		this.photoBarang = photoBarang;
 	}

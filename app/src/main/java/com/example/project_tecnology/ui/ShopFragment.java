@@ -1,5 +1,7 @@
 package com.example.project_tecnology.ui;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,8 +16,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.project_tecnology.Adapter.adminAdapter;
@@ -42,6 +46,7 @@ public class ShopFragment extends Fragment {
     private adminAdapter adapter;
     private List<DataBarang> dataBarangs;
     private RecyclerView recyclerView;
+    private ImageView btnGotoHandphone;
 
     public ShopFragment() {
         // Required empty public constructor
@@ -73,6 +78,7 @@ public class ShopFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_news, container, false);
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -80,6 +86,7 @@ public class ShopFragment extends Fragment {
         frameLayout = view.findViewById(R.id.FrameSearchShop);
         etCariShop = view.findViewById(R.id.etsearchShop);
         recyclerView = view.findViewById(R.id.recyclerviewSearhShop);
+        btnGotoHandphone = view.findViewById(R.id.btnGotoHandphone);
 
         dataBarangs = new ArrayList<>();
         adapter = new adminAdapter(getContext(), dataBarangs);
@@ -110,7 +117,14 @@ public class ShopFragment extends Fragment {
             }
         });
 
-        listBarang(null);
+        btnGotoHandphone.setOnClickListener(v->{
+            Intent intent = new Intent(getActivity(),BarangActivity.class);
+            int id = 1;
+            intent.putExtra("id", id);
+            startActivity(intent);
+        });
+//
+//        listBarang(null);
     }
 
     private void listBarang(String namaBarang) {
