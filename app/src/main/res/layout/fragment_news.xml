@@ -17,12 +17,14 @@
         android:padding="8dp">
 
         <EditText
-            android:layout_width="305dp"
+            android:id="@+id/etsearchShop"
+            android:layout_width="300dp"
             android:layout_height="44dp"
             android:drawableStart="@drawable/search"
             android:drawablePadding="5dp"
             android:hint="Search Product"
             android:textSize="18dp" />
+
 
         <ImageView
             android:layout_width="35dp"
@@ -30,6 +32,35 @@
             android:src="@drawable/shopping_cart__1_"
             android:paddingLeft="5dp"/>
     </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/FrameSearchShop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:visibility="gone"
+            android:background="@color/material_dynamic_neutral60">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewSearhShop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_shop"/>
+
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="awowaowaowakwoa"-->
+<!--                    />-->
+
+            </ScrollView>
+
+        </FrameLayout>
+
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

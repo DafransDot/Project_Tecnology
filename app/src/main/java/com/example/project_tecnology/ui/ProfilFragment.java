@@ -124,7 +124,7 @@ public class ProfilFragment extends Fragment {
     }
 
     @Override
-    public void  onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
         textViewUsername = view.findViewById(R.id.textViewUsername);

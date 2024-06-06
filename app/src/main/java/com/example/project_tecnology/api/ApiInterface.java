@@ -72,6 +72,7 @@ public interface ApiInterface {
     Call<BarangResponse> BarangResponse(
             @Part("nama_barang") RequestBody nama_barang,
             @Part("deskripsi") RequestBody deskripsi,
+            @Part("kategori_id") RequestBody kategori_id,
             @Part MultipartBody.Part photo_barang
     );
 

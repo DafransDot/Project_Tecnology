@@ -1,15 +1,19 @@
 package com.example.project_tecnology.admin;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.project_tecnology.Adapter.FileUtil;
+import com.example.project_tecnology.R;
+import com.example.project_tecnology.admin.AdminActivity;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
 import com.example.project_tecnology.databinding.ActivityAddBarangAdminBinding;
@@ -24,13 +28,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+// ... other imports
+
 public class addBarangAdmin extends AppCompatActivity {
     private ActivityAddBarangAdminBinding binding;
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    String nama_barang, deskripsi, PhotoBarang;
+    String nama_barang, deskripsi;
     ApiInterface apiInterface;
     Uri uri;
+    Spinner spinnerKategori;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,42 +45,51 @@ public class addBarangAdmin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
 
+        spinnerKategori = findViewById(R.id.spinnerKategori);
 
+        // Sample data for spinner
+        String[] kategoriItems = {"Kategori 1", "Kategori 2", "Kategori 3", "Kategori 4", "Kategori 5", "Kategori 6", "Kategori 7", "Kategori 8"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, kategoriItems);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerKategori.setAdapter(adapter);
 
-        binding.buttonBack.setOnClickListener( v -> {
+        binding.buttonBack.setOnClickListener(v -> {
             Intent intent = new Intent(this, AdminActivity.class);
             startActivity(intent);
         });
 
-        binding.UploadImagesAddBarang.setOnClickListener(v->{
+        binding.UploadImagesAddBarang.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
-            startActivityForResult(intent,PICK_IMAGE_REQUEST);
-
+            startActivityForResult(intent, PICK_IMAGE_REQUEST);
         });
 
-        binding.buttonSubmitUpdate.setOnClickListener( v->{
+        binding.buttonSubmitUpdate.setOnClickListener(v -> {
             nama_barang = binding.EditTextNamaBarangAdd.getText().toString();
             deskripsi = binding.EditTextDeskripsiAdd.getText().toString();
 
-            AddBarang(nama_barang,deskripsi);
-        });
+            // Get selected category
+            String kategori = spinnerKategori.getSelectedItem().toString();
+            int kategoriId = spinnerKategori.getSelectedItemPosition() + 1; // Assuming category IDs start from 1
 
+            AddBarang(nama_barang, deskripsi, kategoriId);
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             uri = data.getData();
             binding.imagesViewAddBarang.setImageURI(uri);
         }
     }
 
-    private void AddBarang(String nama_barang, String deskripsi) {
-        RequestBody nama_barangBody = RequestBody.create(MediaType.parse("text/plain"),nama_barang);
-        RequestBody deskripsiBody = RequestBody.create(MediaType.parse("text/plain"),deskripsi);
+    private void AddBarang(String nama_barang, String deskripsi, int kategori_id) {
+        RequestBody nama_barangBody = RequestBody.create(MediaType.parse("text/plain"), nama_barang);
+        RequestBody deskripsiBody = RequestBody.create(MediaType.parse("text/plain"), deskripsi);
+        RequestBody kategoriIdBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(kategori_id));
 
         MultipartBody.Part photo_barang = null;
         if (uri != null) {
@@ -87,7 +103,7 @@ public class addBarangAdmin extends AppCompatActivity {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<BarangResponse> call = apiInterface.BarangResponse(nama_barangBody, deskripsiBody,photo_barang);
+        Call<BarangResponse> call = apiInterface.BarangResponse(nama_barangBody, deskripsiBody, kategoriIdBody, photo_barang);
         call.enqueue(new Callback<BarangResponse>() {
             @Override
             public void onResponse(Call<BarangResponse> call, Response<BarangResponse> response) {

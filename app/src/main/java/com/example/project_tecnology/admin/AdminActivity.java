@@ -46,7 +46,7 @@ public class AdminActivity extends AppCompatActivity {
         btnCariBarang = findViewById(R.id.btnCariBarang);
 
         binding.btnTambahBarang.setOnClickListener(v -> {
-            Intent intent = new Intent(this, addBarangAdmin.class);
+            Intent intent = new Intent(AdminActivity.this, addBarangAdmin.class);
             startActivity(intent);
         });
 
