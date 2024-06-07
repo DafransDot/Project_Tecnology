@@ -99,9 +99,6 @@ public class UpdateBarangActivity extends AppCompatActivity {
             }
         }
 
-
-
-
         apiInterface.updateBarang(idr,namaBarangBody,deskripsiBody,photo_barang).enqueue(new Callback<DataBarang>() {
             @Override
             public void onResponse(Call<DataBarang> call, Response<DataBarang> response) {

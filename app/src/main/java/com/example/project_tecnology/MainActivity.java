@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,13 +52,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         name = sessionManager.getUserDetail().get(SessionManager.NAME);
         user_id = sessionManager.getUserDetail().get(USER_ID); // Convert to int
 //        Photo = sessionManager.getUserDetail().get(PHOTO);
+        Log.d("main", "USer_id" + user_id);
 
 
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username", username);
-        editor.putString("user_id", user_id);
+        editor.putString("user", user_id);
         editor.putString("name", name);
+
+        Log.d("main", "USer_id kirim" + user_id);
+
 //        editor.putString("photo", Photo);
 
         editor.apply();

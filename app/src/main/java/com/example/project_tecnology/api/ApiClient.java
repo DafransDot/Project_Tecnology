@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class ApiClient {
-    private static final String BASE_URL ="http://192.168.193.117/app-technology/";
+    private static final String BASE_URL ="http://192.168.240.117/app-technology/";
     private static Retrofit retrofit;
 
     public static Retrofit getClient() {
