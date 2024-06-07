@@ -20,7 +20,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Login_activity extends AppCompatActivity {
-
     private ActivityLoginBinding binding;
     String Username, Password;
     ApiInterface apiInterface;

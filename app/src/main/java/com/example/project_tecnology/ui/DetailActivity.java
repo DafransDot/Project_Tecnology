@@ -25,7 +25,7 @@ public class DetailActivity extends AppCompatActivity {
         if (photo_barang != null && !photo_barang.isEmpty()) {
             try {
                 Bitmap bitmap = decodeBase64ToBitmap(photo_barang);
-                binding.imageView.setImageBitmap(bitmap);
+                binding.imageViewDetail.setImageBitmap(bitmap);
             } catch (IllegalArgumentException e) {
                 Log.e("DetailActivity", "Invalid Base64 image string", e);
             }

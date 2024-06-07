@@ -6,11 +6,22 @@
     tools:context=".ui.ProfilFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profil"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-medium"/>
+
 
         <ImageView
             android:id="@+id/imageViewProfile"
@@ -30,13 +41,28 @@
             android:layout_gravity="center" />
 
         <TextView
+            android:id="@+id/textViewFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="FullName"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/textViewNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Number Phone"
+            android:textSize="16sp"/>
+
+        <TextView
             android:id="@+id/textViewEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Email"
-            android:textSize="16sp"
-            android:layout_gravity="center" />
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/buttonUpdateProfile"
@@ -44,6 +70,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Update Profile" />
+
+        <Button
+            android:id="@+id/buttonAbout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="About" />
 
         <Button
             android:id="@+id/buttonLogout"
