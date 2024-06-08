@@ -35,13 +35,13 @@ import retrofit2.Response;
 
 public class ProfilFragment extends Fragment {
 
-    private TextView textViewUsername, textViewEmail;
+    private TextView textViewUsername, textViewEmail, textViewPhone, textViewFullname;
     private ImageView imageViewProfile;
     private Button buttonUpdateProfile, buttonLogout;
     private ApiInterface apiInterface;
     private SessionManager sessionManager;
 
-    private String username, name, Photo, userId;
+    private String username, name, Photo, userId, fullname, phone;
 
     public ProfilFragment() {
         // Required empty public constructor
@@ -87,6 +87,8 @@ public class ProfilFragment extends Fragment {
 
         textViewUsername = view.findViewById(R.id.textViewUsername);
         textViewEmail = view.findViewById(R.id.textViewEmail);
+        textViewFullname = view.findViewById(R.id.textViewFullName);
+        textViewPhone = view.findViewById(R.id.textViewNo);
         imageViewProfile = view.findViewById(R.id.imageViewProfile);
         buttonUpdateProfile = view.findViewById(R.id.buttonUpdateProfile);
         buttonLogout = view.findViewById(R.id.buttonLogout);
@@ -143,9 +145,14 @@ public class ProfilFragment extends Fragment {
                         username = loginData.getUsername();
                         name = loginData.getName();
                         Photo = loginData.getProfilePhotoPath();
+                        phone = loginData.getPhone();
+                        fullname = loginData.getFullname();
+
 
                         textViewUsername.setText(username);
                         textViewEmail.setText(name);
+                        textViewFullname.setText(fullname);
+                        textViewPhone.setText(phone);
 
                         if (Photo != null && !Photo.isEmpty()) {
                             try {

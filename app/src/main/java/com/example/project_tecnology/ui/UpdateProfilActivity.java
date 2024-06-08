@@ -1,6 +1,7 @@
 package com.example.project_tecnology.ui;
 
 import static com.example.project_tecnology.R.id.buttonBackToProfil;
+import static com.example.project_tecnology.R.id.textViewFullName;
 
 import android.content.Context;
 import android.content.Intent;
@@ -38,7 +39,7 @@ public class UpdateProfilActivity extends AppCompatActivity {
     private Button buttonSubmitUpdate;
     private ImageView imageViewUpdateProfile, buttonBackToProfile;
     private TextView uploadImages;
-    private EditText editTextUpdateUsername, editTextUpdateEmail, editTextUpdatePassword, editTextUpdateNoPhone;
+    private EditText editTEXTfullname, editTextUpdateUsername, editTextUpdateEmail, editTextUpdatePassword, editTextUpdateNoPhone;
     private ApiInterface apiInterface;
     private Uri uri;
 
@@ -55,7 +56,7 @@ public class UpdateProfilActivity extends AppCompatActivity {
         editTextUpdateEmail = findViewById(R.id.EditTextUpdateEmail);
         editTextUpdatePassword = findViewById(R.id.EditTextUpdatePassword);
         editTextUpdateNoPhone = findViewById(R.id.EditTextUpdateNoPhone);
-
+        editTEXTfullname = findViewById(R.id.EditTextUpdateFullname);
         loadProfile();
 
         buttonBackToProfile.setOnClickListener(v -> {
@@ -69,7 +70,8 @@ public class UpdateProfilActivity extends AppCompatActivity {
             String name = editTextUpdateEmail.getText().toString().isEmpty() ? sharedPreferences.getString("name", "") : editTextUpdateEmail.getText().toString();
             String password = editTextUpdatePassword.getText().toString().isEmpty() ? sharedPreferences.getString("password", "") : editTextUpdatePassword.getText().toString();
             String phone = editTextUpdateNoPhone.getText().toString().isEmpty() ? sharedPreferences.getString("phone", "") : editTextUpdateNoPhone.getText().toString();
-            updateProfile(username, name, password, phone);
+            String fullname = editTEXTfullname.getText().toString();
+            updateProfile(username, name, password, phone, fullname);
         });
 
         uploadImages.setOnClickListener(v -> {
@@ -99,7 +101,7 @@ public class UpdateProfilActivity extends AppCompatActivity {
         }
     }
 
-    private void updateProfile(String username, String name, String password, String phone) {
+    private void updateProfile(String username, String name, String password, String phone, String fullname) {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String userId = sharedPreferences.getString("user", null);
 
@@ -108,6 +110,7 @@ public class UpdateProfilActivity extends AppCompatActivity {
         RequestBody nameBody = RequestBody.create(MediaType.parse("text/plain"), name);
         RequestBody passwordBody = RequestBody.create(MediaType.parse("text/plain"), password);
         RequestBody phoneBody = RequestBody.create(MediaType.parse("text/plain"), phone);
+        RequestBody fullnameBody = RequestBody.create(MediaType.parse("text/plain"), fullname);
 
         MultipartBody.Part profilePhoto = null;
         if (uri != null) {
@@ -119,7 +122,7 @@ public class UpdateProfilActivity extends AppCompatActivity {
             }
         }
 
-        apiInterface.updateProfile(id, usernameBody, nameBody, passwordBody, phoneBody, profilePhoto).enqueue(new Callback<LoginData>() {
+        apiInterface.updateProfile(id, usernameBody, nameBody, passwordBody, fullnameBody, phoneBody, profilePhoto).enqueue(new Callback<LoginData>() {
             @Override
             public void onResponse(Call<LoginData> call, Response<LoginData> response) {
                 if (response.isSuccessful()) {

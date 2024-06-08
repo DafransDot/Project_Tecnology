@@ -46,9 +46,11 @@ public class adminAdapter extends RecyclerView.Adapter<adminAdapter.AdminViewHol
     @Override
     public void onBindViewHolder(@NonNull adminAdapter.AdminViewHolder holder, int position) {
         DataBarang barang = dataBarang.get(position);
-
         holder.tvNama_barang.setText(barang.getNamaBarang());
         holder.tvDescripsi.setText(barang.getDeskripsi());
+        String harga = barang.getHarga();
+        String rating = barang.getRating();
+
 
         // Decode Base64 string to Bitmap
         String photoBarang = barang.getPhotoBarang();

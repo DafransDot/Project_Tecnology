@@ -37,7 +37,7 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/item_admin_Deskripsi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"

@@ -15,6 +15,17 @@ public class LoginData {
 	@SerializedName("phone")
 	private String phone;
 
+	@SerializedName("fullname")
+	private String fullname;
+
+	public String getFullname() {
+		return fullname;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
+
 	@SerializedName("profile_photo_path")
 	private String profilePhotoPath;
 	public String getProfilePhotoPath() {

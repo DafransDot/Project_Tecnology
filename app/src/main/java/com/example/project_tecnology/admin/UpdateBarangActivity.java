@@ -56,7 +56,9 @@ public class UpdateBarangActivity extends AppCompatActivity {
         binding.buttonSubmitUpdate.setOnClickListener(v -> {
            String NamaBarang = binding.EditTextUpdateNamaBarang.getText().toString();
            String Deskripsi = binding.EditTextUpdateDeskripsi.getText().toString();
-           UpdateBarang(NamaBarang,Deskripsi);
+           String rating = binding.EditTextUpdateRating.getText().toString();
+           String harga = binding.EditTextUpdateHarga.getText().toString();
+           UpdateBarang(NamaBarang,Deskripsi, rating, harga);
         });
 
         binding.UploadImages.setOnClickListener(v -> {
@@ -78,7 +80,7 @@ public class UpdateBarangActivity extends AppCompatActivity {
         }
     }
 
-    private void UpdateBarang(String namaBarang, String deskripsi) {
+    private void UpdateBarang(String namaBarang, String deskripsi, String rating, String harga) {
         id = getIntent().getStringExtra("ID");
 
 //        SharedPreferences sharedPreferences = getBaseContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -88,6 +90,8 @@ public class UpdateBarangActivity extends AppCompatActivity {
         RequestBody idr = RequestBody.create(MediaType.parse("text/plain"), id);
         RequestBody namaBarangBody = RequestBody.create(MediaType.parse("text/plain"), namaBarang);
         RequestBody deskripsiBody = RequestBody.create(MediaType.parse("text/plain"), deskripsi);
+        RequestBody ratingBody = RequestBody.create(MediaType.parse("text/plain"), rating);
+        RequestBody hargaBody = RequestBody.create(MediaType.parse("text/plain"), harga);
 
         MultipartBody.Part photo_barang = null;
         if (uri != null) {
@@ -99,7 +103,7 @@ public class UpdateBarangActivity extends AppCompatActivity {
             }
         }
 
-        apiInterface.updateBarang(idr,namaBarangBody,deskripsiBody,photo_barang).enqueue(new Callback<DataBarang>() {
+        apiInterface.updateBarang(idr,namaBarangBody,deskripsiBody, ratingBody,hargaBody,photo_barang).enqueue(new Callback<DataBarang>() {
             @Override
             public void onResponse(Call<DataBarang> call, Response<DataBarang> response) {
                 if (response.isSuccessful()){

@@ -62,6 +62,7 @@ public interface ApiInterface {
             @Part("username") RequestBody username,
             @Part("name") RequestBody name,
             @Part("password") RequestBody password,
+            @Part("fullname") RequestBody fullname,
             @Part("phone") RequestBody phone,
             @Part MultipartBody.Part profilePhoto
     );
@@ -73,12 +74,13 @@ public interface ApiInterface {
             @Part("nama_barang") RequestBody nama_barang,
             @Part("deskripsi") RequestBody deskripsi,
             @Part("kategori_id") RequestBody kategori_id,
+            @Part("rating") RequestBody rating, // Menambahkan rating
+            @Part("harga") RequestBody harga, // Menambahkan harga
             @Part MultipartBody.Part photo_barang
     );
 
     @GET("get_barang.php")
     Call<BarangResponse> getBarang(@Query("nama_barang") String namaBarang);
-
 
     @Multipart
     @POST("update_barang.php")
@@ -86,6 +88,8 @@ public interface ApiInterface {
             @Part("id") RequestBody id,
             @Part("nama_barang") RequestBody nama_barang,
             @Part("deskripsi") RequestBody deskripsi,
+            @Part("rating") RequestBody rating, // Menambahkan rating
+            @Part("harga") RequestBody harga, // Menambahkan harga
             @Part MultipartBody.Part photo_barang
     );
 

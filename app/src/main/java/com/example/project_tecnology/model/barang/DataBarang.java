@@ -28,6 +28,28 @@ public class DataBarang {
 	@SerializedName("kategori_id")
 	private int kategoriId;
 
+	@SerializedName("rating")
+	private String rating;
+
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+
+	public String getHarga() {
+		return harga;
+	}
+
+	public void setHarga(String harga) {
+		this.harga = harga;
+	}
+
+	@SerializedName("harga")
+	private String harga;
+
 	public int getKategoriId() {
 		return kategoriId;
 	}

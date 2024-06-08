@@ -34,7 +34,7 @@ public class addBarangAdmin extends AppCompatActivity {
     private ActivityAddBarangAdminBinding binding;
     private static final int PICK_IMAGE_REQUEST = 1;
 
-    String nama_barang, deskripsi;
+    String nama_barang, deskripsi, rating, harga;
     ApiInterface apiInterface;
     Uri uri;
     Spinner spinnerKategori;
@@ -68,12 +68,14 @@ public class addBarangAdmin extends AppCompatActivity {
         binding.buttonSubmitUpdate.setOnClickListener(v -> {
             nama_barang = binding.EditTextNamaBarangAdd.getText().toString();
             deskripsi = binding.EditTextDeskripsiAdd.getText().toString();
+            rating = binding.EditTextRating.getText().toString();
+            harga = binding.EditTextHarga.getText().toString();
 
             // Get selected category
             String kategori = spinnerKategori.getSelectedItem().toString();
             int kategoriId = spinnerKategori.getSelectedItemPosition() + 1; // Assuming category IDs start from 1
 
-            AddBarang(nama_barang, deskripsi, kategoriId);
+            AddBarang(nama_barang, deskripsi, kategoriId, rating, harga);
         });
     }
 
@@ -86,10 +88,12 @@ public class addBarangAdmin extends AppCompatActivity {
         }
     }
 
-    private void AddBarang(String nama_barang, String deskripsi, int kategori_id) {
+    private void AddBarang(String nama_barang, String deskripsi, int kategori_id, String rating, String harga) {
         RequestBody nama_barangBody = RequestBody.create(MediaType.parse("text/plain"), nama_barang);
         RequestBody deskripsiBody = RequestBody.create(MediaType.parse("text/plain"), deskripsi);
         RequestBody kategoriIdBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(kategori_id));
+        RequestBody ratingBody = RequestBody.create(MediaType.parse("text/plain"), rating);
+        RequestBody hargaBody = RequestBody.create(MediaType.parse("text/plain"), harga);
 
         MultipartBody.Part photo_barang = null;
         if (uri != null) {
@@ -103,7 +107,7 @@ public class addBarangAdmin extends AppCompatActivity {
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<BarangResponse> call = apiInterface.BarangResponse(nama_barangBody, deskripsiBody, kategoriIdBody, photo_barang);
+        Call<BarangResponse> call = apiInterface.BarangResponse(nama_barangBody, deskripsiBody, kategoriIdBody, ratingBody,hargaBody,photo_barang);
         call.enqueue(new Callback<BarangResponse>() {
             @Override
             public void onResponse(Call<BarangResponse> call, Response<BarangResponse> response) {
