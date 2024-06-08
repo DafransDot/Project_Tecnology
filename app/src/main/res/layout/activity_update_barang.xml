@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".admin.UpdateBarangActivity"
     android:orientation="vertical">
-    <Button
+
+    <ImageView
         android:id="@+id/buttonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="kembali"
-        />
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:paddingLeft="5dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -40,7 +41,14 @@
         android:id="@+id/EditTextUpdateNamaBarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="NAma BArang"/>
+        android:hint="Nama BArang"/>
+
+    <EditText
+        android:paddingTop="20dp"
+        android:id="@+id/EditTextUpdateRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Rating"/>
 
     <EditText
         android:paddingTop="20dp"
@@ -49,12 +57,20 @@
         android:layout_height="wrap_content"
         android:hint="Deskripsi"/>
 
+    <EditText
+        android:paddingTop="20dp"
+        android:id="@+id/EditTextUpdateHarga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Harga"/>
+
 
     <Button
         android:id="@+id/buttonSubmitUpdate"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="submit"/>
+        android:text="submit"
+        android:layout_gravity="center"/>
 
 
 </LinearLayout>
