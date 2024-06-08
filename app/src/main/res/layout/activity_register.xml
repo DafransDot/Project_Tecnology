@@ -32,7 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/baseline_account_circle_24"
-            android:drawablePadding="10dp">
+            android:drawablePadding="10dp"
+            android:textColor="@color/black">
 <!--            android:drawableStart="@drawable/baseline_account_box_24">-->
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -40,14 +41,15 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nama"
+        android:hint="Email"
         >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/registerNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/user"
-            android:drawablePadding="10dp">
+            android:drawablePadding="10dp"
+            android:textColor="@color/black">
 
 <!--            android:drawableStart="@drawable/baseline_android_24">-->
         </com.google.android.material.textfield.TextInputEditText>
@@ -65,7 +67,8 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:drawableStart="@drawable/lock"
-            android:drawablePadding="10dp">
+            android:drawablePadding="10dp"
+            android:textColor="@color/black">
 <!--            android:drawableStart="@drawable/baseline_add_moderator_24">-->
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -86,7 +89,5 @@
         android:textSize="15dp"
         android:layout_gravity="center"
         android:layout_margin="30dp"/>
-
-
 
 </LinearLayout>
