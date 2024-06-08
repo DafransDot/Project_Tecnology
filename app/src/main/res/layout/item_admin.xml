@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
-            android:text="Ini adalah contoh teks yang sangat panjang untuk menunjukkan bagaimana cara mengatur panjang teks di TextView." />
+            android:text="Deskripsi" />
     </LinearLayout>
     <Button
         android:id="@+id/item_admin_Edit"
