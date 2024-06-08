@@ -1,5 +1,7 @@
 package com.example.project_tecnology.ui;
 
+import static com.example.project_tecnology.R.id.buttonBackToProfil;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,8 +35,8 @@ import retrofit2.Response;
 
 public class UpdateProfilActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
-    private Button buttonBackToProfile, buttonSubmitUpdate;
-    private ImageView imageViewUpdateProfile;
+    private Button buttonSubmitUpdate;
+    private ImageView imageViewUpdateProfile, buttonBackToProfile;
     private TextView uploadImages;
     private EditText editTextUpdateUsername, editTextUpdateEmail, editTextUpdatePassword, editTextUpdateNoPhone;
     private ApiInterface apiInterface;

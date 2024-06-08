@@ -9,6 +9,7 @@ import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.project_tecnology.admin.AdminActivity;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
 import com.example.project_tecnology.databinding.ActivityLoginBinding;
@@ -57,9 +58,15 @@ public class Login_activity extends AppCompatActivity {
                     id = loginData.getUserId();
                     sessionManager.createLoginSession(loginData);
                     Log.d("Login Activity", "Login successfully"+id);
-                    Toast.makeText(Login_activity.this, response.body().getData().getName(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Login_activity.this, MainActivity.class);
-                    startActivity(intent);
+
+                    if(loginData.getUserId() == 1){
+                        Intent intent = new Intent(Login_activity.this, AdminActivity.class);
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(Login_activity.this, response.body().getData().getName(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Login_activity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
                 }else {
                     Log.d("Login Activity", "Login Failed");
                     Toast.makeText(Login_activity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();

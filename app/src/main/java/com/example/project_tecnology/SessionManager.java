@@ -19,6 +19,9 @@ public class SessionManager {
     public static final String USERNAME = "username";
     public static final String NAME = "Name";
     public static final String PHONE = "phone";
+    
+
+
 //    public static final String PHOTO = "photo";
 
     public SessionManager(Context context) {

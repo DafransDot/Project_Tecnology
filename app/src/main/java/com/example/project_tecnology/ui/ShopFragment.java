@@ -1,6 +1,5 @@
 package com.example.project_tecnology.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,37 +15,30 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.project_tecnology.Adapter.adminAdapter;
 import com.example.project_tecnology.R;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
+import com.example.project_tecnology.databinding.FragmentShopBinding;
 import com.example.project_tecnology.model.barang.BarangResponse;
 import com.example.project_tecnology.model.barang.DataBarang;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ShopFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
+public class ShopFragment extends Fragment {
+    private FragmentShopBinding binding;
     private static final String TAG = "ShopFragment";
 
-    private FrameLayout frameLayout;
-    private EditText etCariShop;
     private ApiInterface apiInterface;
     private adminAdapter adapter;
     private List<DataBarang> dataBarangs;
-    private RecyclerView recyclerView;
-    private ImageView btnGotoHandphone;
 
     public ShopFragment() {
         // Required empty public constructor
@@ -75,25 +67,23 @@ public class ShopFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_news, container, false);
+        // Inflate the layout for this fragment using data binding
+        binding = FragmentShopBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        frameLayout = view.findViewById(R.id.FrameSearchShop);
-        etCariShop = view.findViewById(R.id.etsearchShop);
-        recyclerView = view.findViewById(R.id.recyclerviewSearhShop);
-        btnGotoHandphone = view.findViewById(R.id.btnGotoHandphone);
-
         dataBarangs = new ArrayList<>();
         adapter = new adminAdapter(getContext(), dataBarangs);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerviewSearhShop.setAdapter(adapter);
+        binding.recyclerviewSearhShop.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        etCariShop.addTextChangedListener(new TextWatcher() {
+
+        //Cari Barang dengan metode pencarian
+        binding.etsearchShop.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // No action needed here
@@ -103,11 +93,11 @@ public class ShopFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // Show the FrameLayout when text is entered
                 if (s.length() > 0) {
-                    frameLayout.setVisibility(View.VISIBLE);
-                    String query = etCariShop.getText().toString().trim();
+                    binding.FrameSearchShop.setVisibility(View.VISIBLE);
+                    String query = binding.etsearchShop.getText().toString().trim();
                     listBarang(query);
                 } else {
-                    frameLayout.setVisibility(View.GONE);
+                    binding.FrameSearchShop.setVisibility(View.GONE);
                 }
             }
 
@@ -117,16 +107,53 @@ public class ShopFragment extends Fragment {
             }
         });
 
-        btnGotoHandphone.setOnClickListener(v->{
-            Intent intent = new Intent(getActivity(),BarangActivity.class);
-            int id = 1;
-            intent.putExtra("id", id);
+
+        //intent ke Shop menggunkana metode Kirim ID
+        Intent intent = new Intent(getActivity(), BarangActivity.class);
+        binding.btnGotoHandphoneShop.setOnClickListener(v -> {
+            intent.putExtra("id", 1);
             startActivity(intent);
         });
-//
-//        listBarang(null);
+
+        binding.btnGotoLaptop.setOnClickListener(v -> {
+            intent.putExtra("id", 2);
+            startActivity(intent);
+        });
+
+        binding.btnGotoAccessories.setOnClickListener(v -> {
+            intent.putExtra("id", 3);
+            startActivity(intent);
+        });
+
+        binding.btnGotoSmartwatch.setOnClickListener(v -> {
+            intent.putExtra("id", 4);
+            startActivity(intent);
+        });
+
+        binding.btnGotoVideogame.setOnClickListener(v -> {
+            intent.putExtra("id", 5);
+            startActivity(intent);
+        });
+
+        binding.btnGotoSmartTv.setOnClickListener(v -> {
+            intent.putExtra("id", 6);
+            startActivity(intent);
+        });
+
+        binding.btnGotoDrone.setOnClickListener(v -> {
+            intent.putExtra("id", 7);
+            startActivity(intent);
+        });
+
+        binding.btnGotokamera.setOnClickListener(v -> {
+            intent.putExtra("id", 8);
+            startActivity(intent);
+        });
+
     }
 
+
+    //List Barang
     private void listBarang(String namaBarang) {
         Call<BarangResponse> call;
         if (namaBarang != null && !namaBarang.isEmpty()) {

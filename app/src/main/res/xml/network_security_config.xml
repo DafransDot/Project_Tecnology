@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <domain-config cleartextTrafficPermitted ="true">
-        <domain includeSubdomains ="true">192.168.240.117</domain>
+        <domain includeSubdomains ="true">dafrans.my.id</domain>
 
     </domain-config>
 </network-security-config>
