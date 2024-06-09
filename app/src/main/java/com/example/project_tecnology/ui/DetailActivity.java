@@ -21,6 +21,9 @@ public class DetailActivity extends AppCompatActivity {
         String nama_barang = getIntent().getStringExtra("nama_barang");
         String deskripsi = getIntent().getStringExtra("deskripsi");
         String photo_barang = getIntent().getStringExtra("photo_barang");
+        String harga_barang = getIntent().getStringExtra("harga_barang");
+        String rating_barang = getIntent().getStringExtra("rating_barang");
+
 
         if (photo_barang != null && !photo_barang.isEmpty()) {
             try {
@@ -33,6 +36,9 @@ public class DetailActivity extends AppCompatActivity {
 
         binding.tvNamaBarang.setText(nama_barang);
         binding.tvDeskripsi.setText(deskripsi);
+        binding.tvHargaBarang.setText(rating_barang);
+        binding.tvRating.setText(rating_barang);
+        binding.tvHargaBarang.setText(harga_barang);
     }
 
     private Bitmap decodeBase64ToBitmap(String base64Str) throws IllegalArgumentException {

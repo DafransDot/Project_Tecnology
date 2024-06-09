@@ -79,10 +79,6 @@ public class BerandaFragment extends Fragment {
             startActivity(intentGotoBarang);
         });
 
-        binding.btnGotoLaptop.setOnClickListener(v ->{
-            intentGotoBarang.putExtra("id", 2);
-            startActivity(intentGotoBarang);
-        });
 
         binding.btnGotoAccessories.setOnClickListener(v ->{
             intentGotoBarang.putExtra("id", 3);
@@ -103,16 +99,7 @@ public class BerandaFragment extends Fragment {
             intentGotoBarang.putExtra("id", 6);
             startActivity(intentGotoBarang);
         });
-
-        binding.btnGotoDrone.setOnClickListener( v -> {
-            intentGotoBarang.putExtra("id", 7);
-            startActivity(intentGotoBarang);
-        });
-
-        binding.btnGotokamera.setOnClickListener( v -> {
-            intentGotoBarang.putExtra("id", 8);
-            startActivity(intentGotoBarang);
-        });
+        
 
         //Ngambil Data Dari MainActivity
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

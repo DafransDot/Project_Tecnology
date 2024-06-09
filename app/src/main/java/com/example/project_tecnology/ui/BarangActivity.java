@@ -1,7 +1,9 @@
 package com.example.project_tecnology.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,6 +41,9 @@ public class BarangActivity extends AppCompatActivity {
         adapter = new barangAdapter(this, dataBarangs);
         binding.recyclerViewBarang.setAdapter(adapter);
         binding.recyclerViewBarang.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);
+        binding.recyclerViewBarang.setLayoutManager(layoutManager);
+        binding.recyclerViewBarang.setAdapter(adapter);
 
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 

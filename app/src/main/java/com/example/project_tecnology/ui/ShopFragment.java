@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.project_tecnology.Adapter.adminAdapter;
+import com.example.project_tecnology.Adapter.searchadapter;
 import com.example.project_tecnology.R;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
@@ -37,7 +38,7 @@ public class ShopFragment extends Fragment {
     private static final String TAG = "ShopFragment";
 
     private ApiInterface apiInterface;
-    private adminAdapter adapter;
+    private searchadapter adapter;
     private List<DataBarang> dataBarangs;
 
     public ShopFragment() {
@@ -77,7 +78,7 @@ public class ShopFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         dataBarangs = new ArrayList<>();
-        adapter = new adminAdapter(getContext(), dataBarangs);
+        adapter = new searchadapter(getContext(), dataBarangs);
         binding.recyclerviewSearhShop.setAdapter(adapter);
         binding.recyclerviewSearhShop.setLayoutManager(new LinearLayoutManager(getContext()));
 

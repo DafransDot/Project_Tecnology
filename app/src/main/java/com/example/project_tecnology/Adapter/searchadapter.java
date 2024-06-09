@@ -19,40 +19,41 @@ import com.example.project_tecnology.R;
 import com.example.project_tecnology.model.barang.DataBarang;
 import com.example.project_tecnology.ui.DetailActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class barangAdapter extends RecyclerView.Adapter<barangAdapter.ViewHolder> {
+public class searchadapter extends RecyclerView.Adapter<searchadapter.viewHolder>{
     private List<DataBarang> dataBarang;
+    private ArrayList<DataBarang> arrayList;
     private Context context;
-
-    public barangAdapter(Context context, List<DataBarang> dataBarang) {
-        this.dataBarang = dataBarang;
+    public searchadapter(Context context, List<DataBarang> dataBarang) {
         this.context = context;
+        this.dataBarang = dataBarang;
     }
 
     @NonNull
     @Override
-    public barangAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_barang, parent, false);
-        return new ViewHolder(view);
+    public searchadapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_search, parent, false);
+        return new viewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull barangAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull searchadapter.viewHolder holder, int position) {
         DataBarang barang = dataBarang.get(position);
-        holder.tvNama_barang.setText(barang.getNamaBarang());
-        holder.tvDescripsi.setText(barang.getHarga());
+        holder.namaBarang.setText(barang.getNamaBarang());
 
         String photoBarang = barang.getPhotoBarang();
         if (photoBarang != null && !photoBarang.isEmpty()) {
             try {
                 Bitmap bitmap = decodeBase64ToBitmap(photoBarang);
-                holder.photo_gambar.setImageBitmap(bitmap);
+                holder.photo_barang.setImageBitmap(bitmap);
             } catch (IllegalArgumentException e) {
-                Log.e("barangAdapter", "Invalid Base64 image string", e);
+                Log.e("adminAdapter", "Invalid Base64 image string", e);
             }
         }
-        holder.itemView.setOnClickListener(v -> {
+
+        holder.itemView.setOnClickListener(v->{
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("nama_barang", barang.getNamaBarang());
             intent.putExtra("deskripsi", barang.getDeskripsi());
@@ -72,16 +73,18 @@ public class barangAdapter extends RecyclerView.Adapter<barangAdapter.ViewHolder
     public int getItemCount() {
         return dataBarang.size();
     }
+    public void setDataBarang(List<DataBarang> dataBarang) {
+        this.dataBarang = dataBarang;
+        notifyDataSetChanged();
+    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView photo_gambar;
-        TextView tvNama_barang, tvDescripsi;
-
-        public ViewHolder(@NonNull View itemView) {
+    public class viewHolder extends RecyclerView.ViewHolder {
+        ImageView photo_barang;
+        TextView namaBarang;
+        public viewHolder(@NonNull View itemView) {
             super(itemView);
-            photo_gambar = itemView.findViewById(R.id.item_barang_ImageView);
-            tvNama_barang = itemView.findViewById(R.id.item_barang_NamaBarang);
-            tvDescripsi = itemView.findViewById(R.id.item_barang_Deskripsi);
+            photo_barang = itemView.findViewById(R.id.item_search_photo);
+            namaBarang = itemView.findViewById(R.id.item_search_tvnamabarang);
         }
     }
 }

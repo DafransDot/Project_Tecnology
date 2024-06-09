@@ -20,7 +20,8 @@
         android:text="Produk Detail"
         android:textAlignment="center"
         android:textSize="22dp"
-        android:fontFamily="sans-serif-black"/>
+        android:textStyle="bold"
+        android:fontFamily="@font/goodtimesrg"/>
 
     <ImageView
         android:id="@+id/imageViewDetail"
@@ -60,6 +61,7 @@
             android:layout_height="25dp"
             android:src="@drawable/star_1" />
         <TextView
+            android:id="@+id/tvRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4.0"
