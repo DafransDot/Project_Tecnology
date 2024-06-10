@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AboutActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.AboutActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:paddingLeft="3dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:textSize="20dp"
+        android:fontFamily="@font/merich"
+        android:textAlignment="center"/>
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:src="@drawable/_0240529_131333"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aplikasi Ini Dibuat Oleh Tim ByteBuy Dynamic Class, Yang Beranggotakan Ahmad Renaldi, Diki Aulio Fransisko, Muhammad Zul Asfi, dan Shania Kuntum Khaira, Aplikasi Ini Merupakan Sebuah Aplikasi E-Commerce Teknology"
+        android:fontFamily="@font/mahodadisplayregular"
+        android:textAlignment="center"/>
+
+
 
 </LinearLayout>

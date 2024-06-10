@@ -41,7 +41,7 @@
         android:id="@+id/EditTextUpdateNamaBarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nama BArang"/>
+        android:hint="Nama Barang"/>
 
     <EditText
         android:paddingTop="20dp"
