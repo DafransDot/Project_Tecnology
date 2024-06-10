@@ -10,12 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.project_tecnology.Adapter.adminAdapter;
+import com.example.project_tecnology.MainActivity;
 import com.example.project_tecnology.R;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
 import com.example.project_tecnology.databinding.ActivityAdminBinding;
 import com.example.project_tecnology.model.barang.BarangResponse;
 import com.example.project_tecnology.model.barang.DataBarang;
+import com.example.project_tecnology.ui.BerandaFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -55,6 +58,11 @@ public class AdminActivity extends AppCompatActivity {
         btnCariBarang.setOnClickListener(v -> {
             String query = etCariBarang.getText().toString().trim();
             listBarang(query);
+        });
+
+        binding.btnGotoBeranda.setOnClickListener(v->{
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         });
 
             listBarang(null);

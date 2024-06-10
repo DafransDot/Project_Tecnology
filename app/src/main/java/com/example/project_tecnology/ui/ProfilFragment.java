@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.project_tecnology.Login_activity;
 import com.example.project_tecnology.R;
 import com.example.project_tecnology.SessionManager;
+import com.example.project_tecnology.admin.AdminActivity;
 import com.example.project_tecnology.api.ApiClient;
 import com.example.project_tecnology.api.ApiInterface;
 import com.example.project_tecnology.model.ApiResponse;
@@ -37,9 +38,10 @@ public class ProfilFragment extends Fragment {
 
     private TextView textViewUsername, textViewEmail, textViewPhone, textViewFullname;
     private ImageView imageViewProfile;
-    private Button buttonUpdateProfile, buttonLogout, buttonAbout;
+    private Button buttonUpdateProfile, buttonLogout, buttonAbout, btnAdmin;
     private ApiInterface apiInterface;
     private SessionManager sessionManager;
+    int id;
 
     private String username, name, Photo, userId, fullname, phone;
 
@@ -93,6 +95,7 @@ public class ProfilFragment extends Fragment {
         buttonUpdateProfile = view.findViewById(R.id.buttonUpdateProfile);
         buttonLogout = view.findViewById(R.id.buttonLogout);
         buttonAbout = view.findViewById(R.id.buttonAbout);
+        btnAdmin = view.findViewById(R.id.btnAdmin);
 
         buttonUpdateProfile.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), UpdateProfilActivity.class);
@@ -115,7 +118,7 @@ public class ProfilFragment extends Fragment {
 
         if (userId != null && !userId.isEmpty()) {
             try {
-                int id = Integer.parseInt(userId);
+                id = Integer.parseInt(userId);
                 Log.d("Profile", "User ID: " + id);
                 getUserProfile(id);
             } catch (NumberFormatException e) {
@@ -124,6 +127,14 @@ public class ProfilFragment extends Fragment {
             }
         } else {
             Log.e("Profile", "User ID is null or empty");
+        }
+
+        if (id == 1){
+            btnAdmin.setVisibility(View.VISIBLE);
+            btnAdmin.setOnClickListener( v->{
+                Intent intent = new Intent(getActivity(), AdminActivity.class);
+                startActivity(intent);
+            });
         }
 
     }

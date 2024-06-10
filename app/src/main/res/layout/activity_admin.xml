@@ -7,6 +7,9 @@
     tools:context=".admin.AdminActivity"
     android:orientation="vertical">
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +32,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="cari"/>
+
+        <Button
+            android:id="@+id/btnGotoBeranda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GO HOME"/>
+
     </LinearLayout>
+    </HorizontalScrollView>
 
 
 
