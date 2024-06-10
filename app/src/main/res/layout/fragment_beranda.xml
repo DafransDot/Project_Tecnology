@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:fontFamily="@font/peachdays"
+                    android:fontFamily="@font/goodtimesrg"
                     android:text="Username"
                     android:textAlignment="center"
                     android:textSize="15dp" />
@@ -61,9 +61,9 @@
                     android:id="@+id/TextViewNomor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/peachdays"
+                    android:fontFamily="@font/butlerextrabold"
                     android:padding="5dp"
-                    android:text="0896224567"
+                    android:text="Email"
                     android:textSize="15dp" />
 
             </LinearLayout>
@@ -71,11 +71,17 @@
         </androidx.cardview.widget.CardView>
 
         <ImageView
-            android:layout_width="380dp"
+            android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-
             android:src="@drawable/group_42"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recommendation"
+            android:paddingLeft="3dp"
+            android:fontFamily="@font/peachdays"/>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -85,41 +91,60 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <ImageView
+            <Button
                 android:id="@+id/btnGotoHandphone"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/group_1"
-                android:paddingLeft="5dp"/>
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="Handphone"
+                android:textSize="9dp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/backgroundbutton"
+                android:fontFamily="@font/rosela"
+                android:layout_marginLeft="5dp"/>
 
-                <ImageView
+            <Button
                 android:id="@+id/btnGotoAccessories"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/group_30"
-                android:paddingLeft="5dp"/>
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="Accessories"
+                android:textSize="8dp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/backgroundbutton"
+                android:fontFamily="@font/merich"
+                android:layout_marginLeft="5dp"/>
 
-                <ImageView
-                android:id="@+id/btnGotoSmartwatch"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/group_31"
-                android:paddingLeft="5dp"/>
+                <Button
+                    android:id="@+id/btnGotoSmartwatch"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:text="Smartwatch"
+                    android:textSize="8dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/backgroundbutton"
+                    android:fontFamily="@font/rosela"
+                    android:layout_marginLeft="5dp"/>
 
-                <ImageView
+                <Button
                     android:id="@+id/btnGotoVideogame"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/group_13"
-                    android:paddingLeft="5dp"/>
-                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:text="Videogame"
+                    android:textSize="9dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/backgroundbutton"
+                    android:fontFamily="@font/rosela"
+                    android:layout_marginLeft="5dp"/>
+
+                <Button
                     android:id="@+id/btnGotoSmartTv"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/group_6"
-                    android:paddingLeft="5dp"/>
-
-
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:text="SmartTv"
+                    android:textSize="11dp"
+                    android:textColor="@color/black"
+                    android:backgroundTint="@color/backgroundbutton"
+                    android:fontFamily="@font/rosela"
+                    android:layout_marginLeft="5dp"/>
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -160,24 +185,40 @@
             android:padding="3dp"
             android:fontFamily="@font/peachdays"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/IMAGEVIEWApplewatch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/group_12"
-                android:paddingLeft="15dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/IMAGEVIEWAirpodsMax"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/group_11"
-                android:paddingLeft="60dp"/>
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/IMAGEVIEWIphone15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:src="@drawable/group_20" />
+                <ImageView
+                    android:id="@+id/IMAGEVIEWAirpods"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/group_12"
+                    android:paddingLeft="15dp"/>
+                <ImageView
+                    android:id="@+id/IMAGEVIEWMacbookAir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/group_10"
+                    android:paddingLeft="15dp"/>
+                <ImageView
+                    android:id="@+id/IMAGEVIEWGooglePixel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/group_29"
+                    android:paddingLeft="15dp"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
         </LinearLayout>
 </FrameLayout>

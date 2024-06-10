@@ -14,7 +14,7 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:src="@drawable/_0240529_131333"
-        android:layout_margin="70dp"/>
+        android:layout_margin="130dp"/>
 <ProgressBar
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>
@@ -23,6 +23,6 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:src="@drawable/group_4"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

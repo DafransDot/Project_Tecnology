@@ -37,7 +37,7 @@ public class ProfilFragment extends Fragment {
 
     private TextView textViewUsername, textViewEmail, textViewPhone, textViewFullname;
     private ImageView imageViewProfile;
-    private Button buttonUpdateProfile, buttonLogout;
+    private Button buttonUpdateProfile, buttonLogout, buttonAbout;
     private ApiInterface apiInterface;
     private SessionManager sessionManager;
 
@@ -92,9 +92,16 @@ public class ProfilFragment extends Fragment {
         imageViewProfile = view.findViewById(R.id.imageViewProfile);
         buttonUpdateProfile = view.findViewById(R.id.buttonUpdateProfile);
         buttonLogout = view.findViewById(R.id.buttonLogout);
+        buttonAbout = view.findViewById(R.id.buttonAbout);
 
         buttonUpdateProfile.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), UpdateProfilActivity.class);
+            startActivity(intent);
+            Toast.makeText(getContext(), "Edit Profil", Toast.LENGTH_SHORT).show();
+        });
+
+        buttonAbout.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), AboutActivity.class);
             startActivity(intent);
             Toast.makeText(getContext(), "Edit Profil", Toast.LENGTH_SHORT).show();
         });

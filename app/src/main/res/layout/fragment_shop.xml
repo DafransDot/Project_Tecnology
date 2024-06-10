@@ -176,10 +176,16 @@
             android:src="@drawable/group_12"
             android:paddingLeft="15dp"/>
         <ImageView
-            android:id="@+id/IMAGEVIEWAirpods2"
+            android:id="@+id/IMAGEVIEWMacbookAir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/group_12"
+            android:src="@drawable/group_10"
+            android:paddingLeft="15dp"/>
+        <ImageView
+            android:id="@+id/IMAGEVIEWAirpodsPro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/group_11"
             android:paddingLeft="15dp"/>
     </LinearLayout>
         </HorizontalScrollView>
@@ -187,7 +193,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hot Sales"
+            android:text="Recommendation"
             android:fontFamily="@font/peachdays"
             android:textSize="15dp"
             android:padding="10dp"/>
@@ -200,24 +206,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-
                 <ImageView
-                    android:id="@+id/IMAGEVIEWApple2"
+                    android:id="@+id/IMAGEVIEWIphone15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="15dp"
-                    android:src="@drawable/group_9" />
+                    android:src="@drawable/group_20" />
                 <ImageView
-                    android:id="@+id/IMAGEVIEWAirpods4"
+                    android:id="@+id/IMAGEVIEWSamsungS24"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/group_12"
+                    android:src="@drawable/group_26"
                     android:paddingLeft="15dp"/>
                 <ImageView
-                    android:id="@+id/IMAGEVIEWAirpods3"
+                    android:id="@+id/IMAGEVIEWOppoA60"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/group_12"
+                    android:src="@drawable/group_25"
+                    android:paddingLeft="15dp"/>
+                <ImageView
+                    android:id="@+id/IMAGEVIEWGooglePixel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/group_29"
                     android:paddingLeft="15dp"/>
             </LinearLayout>
         </HorizontalScrollView>
