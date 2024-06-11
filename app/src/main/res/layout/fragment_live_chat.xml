@@ -21,7 +21,8 @@
         android:id="@+id/editTextMessage"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:hint="Type a message" />
+        android:hint="Type a message"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/buttonSend"
