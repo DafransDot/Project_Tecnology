@@ -24,13 +24,15 @@
                     android:textSize="16sp"
                     android:layout_marginStart="10dp"
                     android:text="username"
+                    android:textColor="@color/black"
                     />
 
             <TextView
                 android:id="@+id/textViewMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chatsdakdwokwokwdo"
+                android:text="Chat Anda"
+                android:textColor="@color/black"
                 android:layout_marginStart="10dp"/>
 
         </LinearLayout>

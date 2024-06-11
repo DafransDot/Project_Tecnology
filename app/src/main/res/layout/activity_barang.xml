@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.BarangActivity"
     android:orientation="vertical"
-
+    android:background="@color/white"
     android:layout_gravity="center">
 
     <androidx.recyclerview.widget.RecyclerView

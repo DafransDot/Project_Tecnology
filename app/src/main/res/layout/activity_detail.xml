@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.DetailActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/whatsapp_image_2024_05_29_at_15_22_47">
 
     <ImageView
         android:id="@+id/IVBack"
@@ -37,7 +38,7 @@
         android:text="Apple Watch Ultra 2 with Ocean"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:fontFamily="@font/peachdays"
+        android:fontFamily="@font/butlerbold"
         android:textAlignment="center"/>
 
     <LinearLayout
@@ -66,8 +67,10 @@
             android:layout_height="wrap_content"
             android:text="4.0"
             android:textSize="18dp"
+            android:fontFamily="@font/butlerextrabold"
             android:paddingEnd="20dp"
-            android:layout_gravity="end"/>
+            android:layout_gravity="end"
+            android:paddingLeft="3dp"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -79,6 +82,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/stoehrnumbers"
         android:text="Apple Watch Jam Digital Terbaik" />
 
     <TextView
@@ -87,6 +91,7 @@
         android:layout_height="wrap_content"
         android:text="Rp.12.300.000"
         android:textSize="25dp"
+        android:fontFamily="@font/rosela"
         android:textAlignment="center"/>
 
 </LinearLayout>

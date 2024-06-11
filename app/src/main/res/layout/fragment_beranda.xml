@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.BerandaFragment">
+    tools:context=".ui.BerandaFragment"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                >
+                android:background="@color/backgroundbutton">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -53,6 +54,7 @@
                     android:padding="5dp"
                     android:fontFamily="@font/goodtimesrg"
                     android:text="Username"
+                    android:textColor="@color/black"
                     android:textAlignment="center"
                     android:textSize="15dp" />
 
@@ -63,6 +65,7 @@
                     android:fontFamily="@font/butlerextrabold"
                     android:padding="5dp"
                     android:text="Email"
+                    android:textColor="@color/black"
                     android:textSize="15dp" />
 
             </LinearLayout>
@@ -80,6 +83,7 @@
             android:layout_height="wrap_content"
             android:text="Recommendation"
             android:paddingLeft="3dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/peachdays"/>
 
         <HorizontalScrollView
@@ -152,7 +156,8 @@
             android:layout_height="wrap_content"
             android:text="News"
             android:fontFamily="@font/peachdays"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:textColor="@color/black"/>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -181,6 +186,7 @@
             android:layout_height="wrap_content"
             android:text="Item Recommendations"
             android:padding="3dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/peachdays"/>
 
         <HorizontalScrollView

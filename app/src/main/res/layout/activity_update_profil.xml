@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.UpdateProfilActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/whatsapp_image_2024_06_11_at_21_40_22__1_">
     
     <ImageView
         android:id="@+id/buttonBackToProfil"
@@ -27,6 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="upload Images"
+        android:textColor="@color/black"
+        android:fontFamily="@font/stoehrnumbers"
         android:layout_gravity="center"
         />
 
@@ -35,41 +38,52 @@
         android:id="@+id/EditTextUpdateUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"/>
+        android:hint="Username"
+        android:textColor="@color/black"
+        android:textColorHint="@color/backgroundbutton"/>
 
     <EditText
         android:paddingTop="20dp"
         android:id="@+id/EditTextUpdateFullname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="FullName"/>
+        android:hint="FullName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/backgroundbutton"/>
 
     <EditText
         android:paddingTop="20dp"
         android:id="@+id/EditTextUpdateEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"/>
+        android:hint="Email"
+        android:textColor="@color/black"
+        android:textColorHint="@color/backgroundbutton"/>
 
     <EditText
         android:paddingTop="20dp"
         android:id="@+id/EditTextUpdatePassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"/>
+        android:hint="Password"
+        android:textColor="@color/black"
+        android:textColorHint="@color/backgroundbutton"/>
 
     <EditText
         android:paddingTop="20dp"
         android:id="@+id/EditTextUpdateNoPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nomor Phone"/>
+        android:hint="Nomor Phone"
+        android:textColor="@color/black"
+        android:textColorHint="@color/backgroundbutton"/>
 
     <Button
         android:id="@+id/buttonSubmitUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

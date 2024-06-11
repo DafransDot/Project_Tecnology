@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ProfilFragment">
+    tools:context=".ui.ProfilFragment"
+    android:background="@color/white">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -19,6 +20,7 @@
             android:layout_height="wrap_content"
             android:text="Profil"
             android:textSize="20dp"
+            android:textColor="@color/black"
             android:textAlignment="center"
             android:fontFamily="sans-serif-medium"/>
 
@@ -38,6 +40,7 @@
             android:text="Username"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_gravity="center" />
 
         <TextView
@@ -46,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="FullName"
+            android:textColor="@color/black"
             android:textSize="16sp"/>
 
         <TextView
@@ -54,6 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Number Phone"
+            android:textColor="@color/black"
             android:textSize="16sp"/>
 
         <TextView
@@ -62,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Email"
+            android:textColor="@color/black"
             android:textSize="16sp"/>
 
         <Button
@@ -69,14 +75,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Update Profile" />
+            android:text="Update Profile"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/buttonAbout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="About" />
+            android:text="About"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/buttonLogout"
@@ -84,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Logout"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
         <Button
             android:id="@+id/btnAdmin"
             android:layout_marginTop="10dp"
