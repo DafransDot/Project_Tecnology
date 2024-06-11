@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.AboutActivity">
+    tools:context=".ui.AboutActivity"
+    android:background="@color/backgroundbutton">
 
     <ImageView
         android:id="@+id/IVBackProfil"
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:text="About"
         android:textSize="20dp"
+        android:textColor="@color/black"
         android:fontFamily="@font/merich"
         android:textAlignment="center"/>
 
@@ -31,9 +33,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aplikasi Ini Dibuat Oleh Tim ByteBuy Dynamic Class, Yang Beranggotakan Ahmad Renaldi, Diki Aulio Fransisko, Muhammad Zul Asfi, dan Shania Kuntum Khaira, Aplikasi Ini Merupakan Sebuah Aplikasi E-Commerce Teknology"
+        android:text="Aplikasi Ini Dibuat Oleh Tim ByteBuy Dynamic Class, Yang Beranggotakan Ahmad Renaldi, Diki Aulio Fransisko, Muhammad Zul Asfi, dan Shania Kuntum Khaira, Aplikasi Ini Merupakan Sebuah Aplikasi E-Commerce Teknology.ByteBuy bertujuan untuk menyederhanakan proses
+berbelanja barang elektronik serta meningkatkan kepuasan konsumen melalui kurasi produk
+yang cermat, rekomendasi yang disesuaikan, dan pengalaman berbelanja yang lebih personal
+dan menyenangkan. "
         android:fontFamily="@font/mahodadisplayregular"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColor="@color/black"/>
 
 
 

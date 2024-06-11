@@ -22,7 +22,8 @@
         android:textAlignment="center"
         android:textSize="22dp"
         android:textStyle="bold"
-        android:fontFamily="@font/goodtimesrg"/>
+        android:fontFamily="@font/goodtimesrg"
+        android:textColor="@color/black"/>
 
     <ImageView
         android:id="@+id/imageViewDetail"
@@ -39,7 +40,8 @@
         android:textSize="20dp"
         android:textStyle="bold"
         android:fontFamily="@font/butlerbold"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColor="@color/black"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,16 +63,18 @@
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:src="@drawable/star_1" />
-        <TextView
-            android:id="@+id/tvRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4.0"
-            android:textSize="18dp"
-            android:fontFamily="@font/butlerextrabold"
-            android:paddingEnd="20dp"
-            android:layout_gravity="end"
-            android:paddingLeft="3dp"/>
+
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/butlerextrabold"
+                android:paddingLeft="3dp"
+                android:paddingEnd="20dp"
+                android:text="4.0"
+                android:textSize="18dp"
+                android:textColor="@color/black"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -83,7 +87,8 @@
         android:layout_marginEnd="40dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/stoehrnumbers"
-        android:text="Apple Watch Jam Digital Terbaik" />
+        android:text="Apple Watch Jam Digital Terbaik"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tvHargaBarang"
@@ -92,6 +97,7 @@
         android:text="Rp.12.300.000"
         android:textSize="25dp"
         android:fontFamily="@font/rosela"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

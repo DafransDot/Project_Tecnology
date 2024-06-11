@@ -28,35 +28,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="upload Images"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:textColor="@color/black"/>
 
     <EditText
         android:paddingTop="20dp"
         android:id="@+id/EditTextNamaBarangAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nama Barang"/>
+        android:hint="Nama Barang"
+        android:textColorHint="@color/color"
+        android:textColor="@color/black"/>
 
     <EditText
         android:paddingTop="20dp"
         android:id="@+id/EditTextRating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Rating"/>
+        android:hint="Rating"
+        android:textColorHint="@color/color"
+        android:textColor="@color/black"/>
 
     <EditText
         android:paddingTop="20dp"
         android:id="@+id/EditTextDeskripsiAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Deskripsi"/>
+        android:hint="Deskripsi"
+        android:textColorHint="@color/color"
+        android:textColor="@color/black"/>
 
     <EditText
         android:paddingTop="20dp"
         android:id="@+id/EditTextHarga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Harga"/>
+        android:hint="Harga"
+        android:textColorHint="@color/color"
+        android:textColor="@color/black"/>
     <Spinner
         android:id="@+id/spinnerKategori"
         android:layout_width="match_parent"
