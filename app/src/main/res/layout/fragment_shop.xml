@@ -25,7 +25,7 @@
             android:drawablePadding="5dp"
             android:hint="Search Product"
             android:textSize="18dp"
-            android:textColorHint="@color/black"
+            android:textColorHint="@color/color"
             android:textColor="@color/black"/>
 
 
