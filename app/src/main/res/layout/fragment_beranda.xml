@@ -156,6 +156,7 @@
                     android:backgroundTint="@color/backgroundbutton"
                     android:fontFamily="@font/rosela"
                     android:layout_marginLeft="5dp"/>
+
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -240,10 +241,6 @@
                     tools:listitem="@layout/item_recomended"
                     android:scrollbars="horizontal"
                     />
-
-                <ProgressBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
