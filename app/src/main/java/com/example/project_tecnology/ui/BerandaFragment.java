@@ -8,14 +8,29 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.project_tecnology.Adapter.recomendedAdapter;
 import com.example.project_tecnology.R;
+import com.example.project_tecnology.api.ApiClient;
+import com.example.project_tecnology.api.ApiInterface;
 import com.example.project_tecnology.databinding.FragmentBerandaBinding;
+import com.example.project_tecnology.model.barang.BarangResponse;
+import com.example.project_tecnology.model.barang.DataBarang;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class BerandaFragment extends Fragment {
     private FragmentBerandaBinding binding;
@@ -27,6 +42,9 @@ public class BerandaFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+    private RecyclerView recyclerViewRecomended;
+    private recomendedAdapter Radapter;
+    private List<DataBarang> barangList = new ArrayList<>();
 
     public BerandaFragment() {
         // Required empty public constructor
@@ -99,7 +117,7 @@ public class BerandaFragment extends Fragment {
             intentGotoBarang.putExtra("id", 6);
             startActivity(intentGotoBarang);
         });
-        
+
 
         //Ngambil Data Dari MainActivity
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -113,9 +131,53 @@ public class BerandaFragment extends Fragment {
         binding.TextViewUsername.setText(username);
         binding.TextViewNomor.setText(name);
 
+        recyclerViewRecomended = view.findViewById(R.id.recyclerViewRecomended);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewRecomended.setLayoutManager(layoutManager);
 
+        // Load barang dari API atau database lokal
+        loadBarang();
 
+    }
+    private void loadBarang() {
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<BarangResponse> call = apiInterface.getBarang("");
+        call.enqueue(new Callback<BarangResponse>() {
+            @Override
+            public void onResponse(Call<BarangResponse> call, Response<BarangResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    barangList = response.body().getData();
 
+                    // Ambil barang secara acak
+                    List<DataBarang> randomBarangList = getRandomBarang(barangList);
+
+                    // Set adapter ke RecyclerView
+                    Radapter = new recomendedAdapter(randomBarangList, getContext());
+                    recyclerViewRecomended.setAdapter(Radapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BarangResponse> call, Throwable t) {
+                // Handle failure
+            }
+        });
+    }
+
+    private List<DataBarang> getRandomBarang(List<DataBarang> barangList) {
+        List<DataBarang> randomBarangList = new ArrayList<>();
+        Random random = new Random();
+
+        // Jumlah barang yang ingin ditampilkan secara acak (misalnya 5)
+        int jumlahBarangAcak = 5;
+
+        // Ambil 5 barang secara acak dari daftar barang
+        for (int i = 0; i < jumlahBarangAcak; i++) {
+            int randomIndex = random.nextInt(barangList.size());
+            randomBarangList.add(barangList.get(randomIndex));
+        }
+
+        return randomBarangList;
     }
 
     @Override

@@ -34,14 +34,6 @@
             android:layout_height="wrap_content"
             android:text="Nama Barang"
             android:textSize="18sp"/>
-
-        <TextView
-            android:id="@+id/item_admin_Deskripsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:text="Deskripsi" />
     </LinearLayout>
     <Button
         android:id="@+id/item_admin_Edit"

@@ -1,12 +1,15 @@
 package com.example.project_tecnology.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 
+import com.example.project_tecnology.MainActivity;
 import com.example.project_tecnology.databinding.ActivityDetailBinding;
 
 public class DetailActivity extends AppCompatActivity {
@@ -39,6 +42,11 @@ public class DetailActivity extends AppCompatActivity {
         binding.tvHargaBarang.setText(rating_barang);
         binding.tvRating.setText(rating_barang);
         binding.tvHargaBarang.setText(harga_barang);
+
+        binding.IVBack.setOnClickListener(v->{
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 
     private Bitmap decodeBase64ToBitmap(String base64Str) throws IllegalArgumentException {

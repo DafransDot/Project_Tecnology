@@ -5,6 +5,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class FileUtil {
     public static String getPath(Context context, Uri uri) {
         String result = null;
@@ -22,5 +26,12 @@ public class FileUtil {
             }
         }
         return result;
+    }
+
+
+    public static <T> List<T> getRandomItems(List<T> source, int itemCount) {
+        List<T> copy = new ArrayList<>(source);
+        Collections.shuffle(copy);
+        return copy.subList(0, Math.min(itemCount, copy.size()));
     }
 }

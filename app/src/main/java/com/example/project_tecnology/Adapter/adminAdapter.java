@@ -47,7 +47,6 @@ public class adminAdapter extends RecyclerView.Adapter<adminAdapter.AdminViewHol
     public void onBindViewHolder(@NonNull adminAdapter.AdminViewHolder holder, int position) {
         DataBarang barang = dataBarang.get(position);
         holder.tvNama_barang.setText(barang.getNamaBarang());
-        holder.tvDescripsi.setText(barang.getDeskripsi());
         String harga = barang.getHarga();
         String rating = barang.getRating();
 
@@ -105,14 +104,13 @@ public class adminAdapter extends RecyclerView.Adapter<adminAdapter.AdminViewHol
 
     public class AdminViewHolder extends RecyclerView.ViewHolder {
         ImageView photo_gambar;
-        TextView tvNama_barang, tvDescripsi;
+        TextView tvNama_barang;
         Button BtnEdit, BtnDelete;
 
         public AdminViewHolder(@NonNull View itemView) {
             super(itemView);
             photo_gambar = itemView.findViewById(R.id.item_admin_ImageView);
             tvNama_barang = itemView.findViewById(R.id.item_admin_NamaBarang);
-            tvDescripsi = itemView.findViewById(R.id.item_admin_Deskripsi);
             BtnEdit = itemView.findViewById(R.id.item_admin_Edit);
             BtnDelete = itemView.findViewById(R.id.item_admin_Delete);
         }

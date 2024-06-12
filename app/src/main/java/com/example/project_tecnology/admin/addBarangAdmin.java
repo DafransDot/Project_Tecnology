@@ -48,7 +48,7 @@ public class addBarangAdmin extends AppCompatActivity {
         spinnerKategori = findViewById(R.id.spinnerKategori);
 
         // Sample data for spinner
-        String[] kategoriItems = {"Kategori 1", "Kategori 2", "Kategori 3", "Kategori 4", "Kategori 5", "Kategori 6", "Kategori 7", "Kategori 8"};
+        String[] kategoriItems = {"HandPhone", "Laptop", "Accesoris", "SmartWatch", "video Game", "Smart TV", "Drone", "Kamera"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, kategoriItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerKategori.setAdapter(adapter);
