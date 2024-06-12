@@ -82,6 +82,10 @@ public interface ApiInterface {
     @GET("get_barang.php")
     Call<BarangResponse> getBarang(@Query("nama_barang") String namaBarang);
 
+    // Metode untuk mendapatkan barang berdasarkan ID
+    @GET("get_barang_id.php")
+    Call<BarangResponse> getBarangById(@Query("id") int id);
+
     @Multipart
     @POST("update_barang.php")
     Call<DataBarang> updateBarang(

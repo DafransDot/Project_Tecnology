@@ -24,6 +24,7 @@ import java.util.List;
 public class barangAdapter extends RecyclerView.Adapter<barangAdapter.ViewHolder> {
     private List<DataBarang> dataBarang;
     private Context context;
+    int id;
 
     public barangAdapter(Context context, List<DataBarang> dataBarang) {
         this.dataBarang = dataBarang;
@@ -82,6 +83,7 @@ public class barangAdapter extends RecyclerView.Adapter<barangAdapter.ViewHolder
             photo_gambar = itemView.findViewById(R.id.item_barang_ImageView);
             tvNama_barang = itemView.findViewById(R.id.item_barang_NamaBarang);
             tvDescripsi = itemView.findViewById(R.id.item_barang_Deskripsi);
+
         }
     }
 }
