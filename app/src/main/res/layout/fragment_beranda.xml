@@ -185,6 +185,11 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/group_44"
                     android:paddingLeft="15dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/group_45"
+                    android:paddingLeft="15dp"/>
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -227,6 +232,7 @@
 <!--                    android:src="@drawable/group_29"-->
 <!--                    android:paddingLeft="15dp"/>-->
 
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewRecomended"
                     android:layout_width="wrap_content"
@@ -234,6 +240,10 @@
                     tools:listitem="@layout/item_recomended"
                     android:scrollbars="horizontal"
                     />
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 

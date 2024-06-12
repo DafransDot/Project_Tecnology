@@ -78,7 +78,7 @@
                 android:id="@+id/btnGotoHandphoneShop"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/group_45"
+                android:src="@drawable/group_450"
                 android:layout_weight="1"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"/>
