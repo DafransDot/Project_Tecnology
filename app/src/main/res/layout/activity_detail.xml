@@ -86,7 +86,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/stoehrnumbers"
+        android:fontFamily="@font/oswald"
         android:text="Apple Watch Jam Digital Terbaik"
         android:textColor="@color/black"/>
 
