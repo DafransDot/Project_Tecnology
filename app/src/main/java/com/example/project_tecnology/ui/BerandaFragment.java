@@ -152,7 +152,7 @@ public class BerandaFragment extends Fragment {
                     List<DataBarang> randomBarangList = getRandomBarang(barangList);
 
                     // Set adapter ke RecyclerView
-                    Radapter = new recomendedAdapter(randomBarangList, getContext());
+                    Radapter = new recomendedAdapter(getContext(), randomBarangList );
                     recyclerViewRecomended.setAdapter(Radapter);
                 }
             }

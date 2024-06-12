@@ -26,7 +26,7 @@ public class recomendedAdapter extends RecyclerView.Adapter<recomendedAdapter.Vi
     private List<DataBarang> dataBarang;
     private Context context;
 
-    public recomendedAdapter(List<DataBarang> dataBarang, Context context) {
+    public recomendedAdapter(Context context, List<DataBarang> dataBarang) {
         this.dataBarang = dataBarang;
         this.context = context;
     }
@@ -35,14 +35,14 @@ public class recomendedAdapter extends RecyclerView.Adapter<recomendedAdapter.Vi
     @Override
     public recomendedAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recomended, parent, false);
-        return new ViewHolder(view);
+        return new recomendedAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull recomendedAdapter.ViewHolder holder, int position) {
         DataBarang barang = dataBarang.get(position);
         holder.tvNama_barang.setText(barang.getNamaBarang());
-        holder.tvHarga_barang.setText(barang.getHarga());
+        holder.tvDescripsi.setText(barang.getHarga());
 
         String photoBarang = barang.getPhotoBarang();
         if (photoBarang != null && !photoBarang.isEmpty()) {
@@ -50,7 +50,7 @@ public class recomendedAdapter extends RecyclerView.Adapter<recomendedAdapter.Vi
                 Bitmap bitmap = decodeBase64ToBitmap(photoBarang);
                 holder.photo_gambar.setImageBitmap(bitmap);
             } catch (IllegalArgumentException e) {
-                Log.e("barangAdapter", "Invalid Base64 image string", e);
+                Log.e("recomendedAdapter", "Invalid Base64 image string", e);
             }
         }
         holder.itemView.setOnClickListener(v -> {
@@ -62,8 +62,6 @@ public class recomendedAdapter extends RecyclerView.Adapter<recomendedAdapter.Vi
             intent.putExtra("rating_barang", barang.getRating());
             context.startActivity(intent);
         });
-
-
     }
 
     private Bitmap decodeBase64ToBitmap(String base64Str) throws IllegalArgumentException {
@@ -78,13 +76,13 @@ public class recomendedAdapter extends RecyclerView.Adapter<recomendedAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView photo_gambar;
-        TextView tvNama_barang, tvHarga_barang;
+        TextView tvNama_barang, tvDescripsi;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             photo_gambar = itemView.findViewById(R.id.item_recomended_Photo);
-            tvHarga_barang = itemView.findViewById(R.id.item_recomended_Harga);
             tvNama_barang = itemView.findViewById(R.id.item_recomended_Nama_barang);
+            tvDescripsi = itemView.findViewById(R.id.item_recomended_Harga);
         }
     }
 }
